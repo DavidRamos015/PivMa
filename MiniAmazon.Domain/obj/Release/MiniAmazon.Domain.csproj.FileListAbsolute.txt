@@ -1,0 +1,4 @@
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain\bin\Release\MiniAmazon.Domain.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain\bin\Release\MiniAmazon.Domain.pdb
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain\obj\Release\MiniAmazon.Domain.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain\obj\Release\MiniAmazon.Domain.pdb

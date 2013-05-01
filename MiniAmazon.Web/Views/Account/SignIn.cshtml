@@ -1,0 +1,37 @@
+﻿@model MiniAmazon.Web.Models.AccountSignInModel
+
+@{
+    ViewBag.Title = "Sign In";
+    Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
+    
+}
+
+
+@{ Html.BeginForm("SignIn", "Account", FormMethod.Post, new { @class = "form-signin" });
+
+    <div style="text-align: center;" > <h2 class="form-signin-heading">Iniciar sesión</h2> </div>
+
+    @Html.TextBoxFor(x => x.Email, new { @class = "input-block-level", @placeholder = "Email address" })
+    @Html.PasswordFor(x => x.Password, new { @class = "input-block-level", @placeholder = "Password" })
+        
+        <label class="checkbox">
+            
+            @Html.CheckBoxFor(x => x.RememberMe) Recordarme
+        </label>
+    
+    
+    <div style="text-align: center;" >
+    <button class="btn btn-large btn-primary" type="submit">Iniciar sesión</button>
+    <button class="btn btn-large btn-primary" type="submit">Facebook</button>
+    </div>
+    <br>
+    <div style="text-align: center;" >
+        @Html.ActionLink("Registrarme", "Create", "Account") | 
+
+        @Html.ActionLink("Olvide mi contraseña", "PasswordRecovery", "Account")
+    </div>
+    
+}
+
+       
+      

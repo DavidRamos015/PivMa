@@ -1,0 +1,70 @@
+@{
+    ViewBag.Title = "Registros";
+    Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
+    
+}
+
+
+@using BootstrapSupport
+@model System.Collections.IEnumerable 
+<h4><small>Detalle</small></h4>
+<table class="table table-striped">
+    <caption></caption>
+    <thead>
+        <tr>
+            @foreach (var property in Model.VisibleProperties())
+            {
+
+                <th>
+                    @property.GetLabel().ToSeparatedWords()
+                </th>
+            }
+            <th></th>
+        </tr>
+    </thead>
+    @{ int index = 0; }
+    @foreach (var model in Model)
+    {
+        ViewData[index.ToString()] = model;
+
+        <tr>
+            @foreach (var property in model.VisibleProperties())
+            {
+
+                <td>
+                    @Html.Display(index + "." + property.Name)
+                </td>                    
+            }
+            <td>
+                <div class="btn-group">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Acción
+                       
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @{
+                            @Html.TryPartial("_actions", model)                            
+                            var routevalues = model.GetIdValue();  
+
+                            <li>@Html.ActionLink("Editar", "Edit",routevalues)</li>
+
+                            <li>@Html.ActionLink("Detalles", "Details",routevalues)</li>
+
+                            <li class="divider"></li>
+
+                            <li>@Html.ActionLink("Eliminar", "Delete", routevalues)</li>
+                               
+                        }
+                    </ul>
+                </div>
+
+            </td>
+        </tr>
+            index++;
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Agregar", "Create", null, new {@class = "btn"})
+</p>
+

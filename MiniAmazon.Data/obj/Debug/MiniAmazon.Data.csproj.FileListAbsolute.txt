@@ -1,0 +1,60 @@
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Data.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Data.pdb
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\AcklenAvenue.Data.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\AcklenAvenue.Data.NHibernate.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\FluentNHibernate.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\Iesi.Collections.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Domain.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\NHibernate.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Domain.pdb
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\FluentNHibernate.xml
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\Iesi.Collections.xml
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\NHibernate.xml
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.csprojResolveAssemblyReference.cache
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.pdb
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Data.dll
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Data.pdb
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\AcklenAvenue.Data.dll
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\AcklenAvenue.Data.NHibernate.dll
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\FluentNHibernate.dll
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\Iesi.Collections.dll
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Domain.dll
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\NHibernate.dll
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Domain.pdb
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\FluentNHibernate.xml
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\Iesi.Collections.xml
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\NHibernate.xml
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.csprojResolveAssemblyReference.cache
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.dll
+D:\Cloud Computing\dropbox\Dropbox\unitec\prog4\proyecto\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.pdb
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Data.dll
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Data.pdb
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\AcklenAvenue.Data.dll
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\AcklenAvenue.Data.NHibernate.dll
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\FluentNHibernate.dll
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\Iesi.Collections.dll
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Domain.dll
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\NHibernate.dll
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Domain.pdb
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\FluentNHibernate.xml
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\Iesi.Collections.xml
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\NHibernate.xml
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.csprojResolveAssemblyReference.cache
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.dll
+C:\Users\draos2q\Desktop\prj\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.pdb
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Data.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Data.pdb
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\AcklenAvenue.Data.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\AcklenAvenue.Data.NHibernate.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\FluentNHibernate.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\Iesi.Collections.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Domain.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\NHibernate.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\MiniAmazon.Domain.pdb
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\FluentNHibernate.xml
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\Iesi.Collections.xml
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Debug\NHibernate.xml
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.csprojResolveAssemblyReference.cache
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.pdb

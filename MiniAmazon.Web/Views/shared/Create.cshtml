@@ -1,0 +1,34 @@
+@{
+    ViewBag.Title = "Nuevo registro";
+    Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
+    
+}
+
+
+
+@using BootstrapSupport
+@model Object
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset class="form-horizontal">
+        <legend> <small>Crear registro</small></legend>
+        @foreach (var property in Model.VisibleProperties())
+        {
+            using(Html.ControlGroupFor(property.Name)){
+                @Html.Label(property.Name.ToSeparatedWords(), new { @class = "control-label" })
+                 <div class="controls">
+                     @Html.Editor(property.Name, new { @class = "input-xlarge" })
+                     @Html.ValidationMessage(property.Name, null, new { @class = "help-inline" })
+                 </div>
+            }
+        }
+		<div class="form-actions">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn " })
+          </div>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Atras", "Index")
+</div>

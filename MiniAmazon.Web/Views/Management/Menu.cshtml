@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/shared/_pivma.main.dashboard.cshtml";
+    
+}
+
+<br>
+<div style="text-align: center;" >
+    <h2>Menu de administración</h2>
+</div>
+<br>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <li class="nav-header">Menu principal</li>
+                <ul class="nav nav-pills">
+
+                    <li>@Html.ActionLink("Categorias", "Index", "Categories")  </li>
+                    <li>@Html.ActionLink("Control de usuarios", "UserAdminControl", "Account")  </li>
+                    <li>@Html.ActionLink("Aprobaciones Pendientes", "Index", "Approval")  </li>
+                    <li>@Html.ActionLink("Sugerencias", "Index", "Feedback")  </li>
+                    <li>@Html.ActionLink("Denuncias", "Index", "Demand")  </li>
+                    <li>@Html.ActionLink("Anuncios", "Index", "Ads")  </li>
+                    <li>@Html.ActionLink("Contactos", "Index", "Contacs")  </li>
+                    <li>@Html.ActionLink("Ayuda", "HelpAdmin", "Help")  </li>
+
+                    
+                   @*@RenderBody()*@
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

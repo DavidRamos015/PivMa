@@ -1,0 +1,15 @@
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\MiniAmazon.Data.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\MiniAmazon.Data.pdb
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\AcklenAvenue.Data.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\AcklenAvenue.Data.NHibernate.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\FluentNHibernate.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\Iesi.Collections.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\MiniAmazon.Domain.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\NHibernate.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\MiniAmazon.Domain.pdb
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\FluentNHibernate.xml
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\Iesi.Collections.xml
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\bin\Release\NHibernate.xml
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Release\MiniAmazon.Data.csprojResolveAssemblyReference.cache
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Release\MiniAmazon.Data.dll
+C:\Users\draos2q\Desktop\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data\obj\Release\MiniAmazon.Data.pdb
