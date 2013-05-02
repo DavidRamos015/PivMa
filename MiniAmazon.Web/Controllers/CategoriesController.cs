@@ -23,7 +23,8 @@ namespace MiniAmazon.Web.Controllers
         {
             var datosAView = _repository.Query<Categories>(x => x.Active == true);
             var category = datosAView.Project().To<CategoriesInputModel>();
-
+            
+            
             ViewBag.Title = "Categorias";
             return View(category);
 

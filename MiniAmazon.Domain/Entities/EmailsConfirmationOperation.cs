@@ -8,7 +8,7 @@ namespace MiniAmazon.Domain.Entities
 
         public virtual DateTime CreateDateTime { get; set; }
 
-        public virtual MailOperationType MailOperationTypeId { get; set; }
+        public virtual int MailOperationTypeId { get; set; }
 
         public virtual string ControllerToRedirect { get; set; }
         

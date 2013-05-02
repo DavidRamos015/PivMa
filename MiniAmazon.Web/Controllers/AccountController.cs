@@ -20,6 +20,20 @@ namespace MiniAmazon.Web.Controllers
             ViewBag.Title = "Usuarios";
         }
 
+        public ActionResult PasswordRecovery()
+        {
+            ViewBag.Title = "Recuperar contraseña";
+            return View(new AccountSignInModel());
+        }
+
+        [HttpPost]
+        public ActionResult PasswordRecovery(AccountSignInModel InpuModel)
+        {
+            ViewBag.Title = "Recuperar contraseña";
+            return View(new AccountSignInModel());
+        }
+
+
         public ActionResult SignIn()
         {
             ViewBag.Title = "Iniciar sesion";
@@ -36,6 +50,12 @@ namespace MiniAmazon.Web.Controllers
 
             if (account != null)
             {
+                if (account.PendingConfirmation == true)
+                {
+                    Attention("Su cuenta esta pendiente de confirmación, favor revise su correo electronico.");
+                    return View(accountSignInModel);
+                }
+
                 return RedirectToAction("Index", "DashBoard");
             }
 
@@ -55,7 +75,7 @@ namespace MiniAmazon.Web.Controllers
         public ActionResult Create_Record()
         {
             ViewBag.Title = "Nuevo usuario";
-            var item = new AccountInputModel();
+            var item = new AccountInputModel { CountryId = 1 };
 
             return View(item);
         }
@@ -67,16 +87,25 @@ namespace MiniAmazon.Web.Controllers
             account.PendingConfirmation = true;
             account.Active = true;
             account.Locked = false;
+            account.PendingConfirmation = true;
 
-            var acc = _repository.First<Account>(x => x.Email == accountInputModel.Email);
+            var magt = new ManagementController(_repository, _mappingEngine);
 
-            if (acc != null)
+            if (magt.ExistingUserEmail(account.Email))
             {
-                Attention("La cuenta de correo ya existe");
-                return View();
+                Attention("El correo ya esta registrado, intente con otro.");
+                return View(account);
             }
 
             _repository.Create(account);
+
+            var codeToConfirm = EmailUtility.SaveRegisterEmailConfirmationOperation(_repository, "DashBoard", "Index",
+                                                                MailOperationType.RegisterAccount, account.Id);
+
+            EmailUtility.SendEmail(_repository, account.Email, account.Name,
+                                   "Por favor ingresa este codigo en la siguiente\r\n Codigo:" + codeToConfirm +
+                                   "\r\n url:" + Utility.UrlToConfirm, "Confirmación de cuenta",
+                                   MailOperationType.RegisterAccount, true);
 
             return RedirectToAction("Index", "DashBoard");
 
@@ -129,13 +158,13 @@ namespace MiniAmazon.Web.Controllers
                 if (message.Trim().Length > 0)
                 {
                     Information(message + "\r\n" + "Un correo electronico ha sido enviado al usuario.");
-                    EmailUtility.SendEmail(item.Email, item.Name, InputModel.Comments, message, MailOperationType.UserDisableorLocked, true);
+                    EmailUtility.SendEmail(_repository, item.Email, item.Name, InputModel.Comments, message, MailOperationType.UserDisableorLocked, true);
                 }
                 else
                     Information("Cambios realizados");
 
 
-                return RedirectToAction("UserAdminControl","Account");
+                return RedirectToAction("UserAdminControl", "Account");
             }
 
             return View(InputModel);

@@ -31,7 +31,7 @@ namespace MiniAmazon.Web.Models
         public virtual decimal Price { get; set; }
 
         [Display(Name = "Fecha de registro")]
-        //[DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         [Required(ErrorMessage = "La fecha es requerida.")]
         [DataType(DataType.Date, ErrorMessage = "Formato de fecha incorrecto.")]
         public virtual DateTime CreateDateTime { get; set; }

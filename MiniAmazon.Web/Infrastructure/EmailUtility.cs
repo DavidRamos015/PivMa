@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Mail;
 using System.Net.Mime;
+using MiniAmazon.Domain;
 using MiniAmazon.Domain.Entities;
 
 namespace MiniAmazon.Web.Infrastructure
@@ -16,14 +17,14 @@ namespace MiniAmazon.Web.Infrastructure
             _delegate.EndInvoke(asyncResult);
         }
 
-        public static void SendEmail(System.Net.Mail.MailMessage mailMessage, Boolean async)
+        private static void SendEmail(MailMessage mailMessage, Boolean async)
         {
 
             var smtpClient = new SmtpClient
                 {
                     Host = "smtp.gmail.com",
                     Port = 587,
-                    Credentials = new System.Net.NetworkCredential("mformytest@gmail.com", "pwmformytest123"),
+                    Credentials = new System.Net.NetworkCredential(Utility.AdminEmail, Utility.AdminPassWord),
                     EnableSsl = true
                 };
 
@@ -41,13 +42,13 @@ namespace MiniAmazon.Web.Infrastructure
             }
         }
 
-        public static bool SendEmail(string emailtoSend, string displayName, string body, string subject, MailOperationType mailOperationType, bool async)
+        public static bool SendEmail(IRepository repository, string emailtoSend, string displayName, string body, string subject, MailOperationType mailOperationType, bool async)
         {
             try
             {
                 var mailMessage = new MailMessage
                     {
-                        From = new MailAddress("mformytest@gmail.com", "Pivma - Online Shopping")
+                        From = new MailAddress(Utility.AdminEmail, "Pivma - Online Shopping")
                     };
 
                 mailMessage.To.Add(new MailAddress(emailtoSend, displayName));
@@ -80,14 +81,55 @@ namespace MiniAmazon.Web.Infrastructure
 
                 SendEmail(mailMessage, async);
 
+                SaveRegisterEmailSent(repository, "enviado", mailOperationType, true);
                 return true;
 
             }
             catch (Exception ex)
             {
+                SaveRegisterEmailSent(repository, ex.Message, mailOperationType, false);
                 return false;
             }
         }
 
+
+        private static ulong HashCodeConfirmation()
+        {
+            var when = DateTime.Now;
+            var kind = (ulong)(int)when.Kind;
+            return (kind << 62) | (ulong)when.Ticks;
+        }
+
+        public static void SaveRegisterEmailSent(IRepository repository, string description, MailOperationType mailOperationId, bool successfully)
+        {
+            var item = new EmailsSent
+                {
+                    CreateDateTime = DateTime.Now,
+                    Description = description,
+                    MailOperationId = (int)mailOperationId,
+                    Successfully = successfully
+                };
+
+            repository.Create(item);
+        }
+
+        public static string SaveRegisterEmailConfirmationOperation(IRepository repository, string controllerToRedirect, string viewToRedirect, MailOperationType mailOperationTypeId, long objectID)
+        {
+            var codeToConfirm = HashCodeConfirmation().ToString();
+
+            var item = new EmailsConfirmationOperation()
+            {
+                CreateDateTime = DateTime.Now,
+                CodeToConfirm = codeToConfirm,
+                ControllerToRedirect = controllerToRedirect,
+                ViewToRedirect = viewToRedirect,
+                MailOperationTypeId = (int)mailOperationTypeId,
+                ObjectID = objectID,
+            };
+
+            repository.Create(item);
+
+            return codeToConfirm;
+        }
     }
 }

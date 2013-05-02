@@ -16,7 +16,7 @@ namespace MiniAmazon.DatabaseDeployer.Seeder
             var account = new Account
                 {
                     Name = "David Ramos",
-                    Email = "davidramos015@gmail.com",
+                    Email = "david.ramos@grupoleitz.com",
                     Password = "0123456789"
                 };
             account.PendingConfirmation = false;
