@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace MiniAmazon.Web.Models
 {
     public class CategoriesInputModel
     {
         public virtual long Id { get; set; }
-        
 
-        [Required]
+
         [Display(Name = "Nombre")]
-        [StringLength(50, ErrorMessage = "El titulo es requerido. Debe ser mayor a 2 caracteres y menor de 50")]
+        [Required(ErrorMessage = "El nombre es requerido.")]
+        //[Remote("jsIsCategoryInUse", "Management", ErrorMessage = "El nombre de la categoria ya existe")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Debe ser mayor a 2 caracteres y menor de 50")]
         public virtual string Name { get; set; }
-
-
-        [Required]
+        
+        
         [Display(Name = "Descripción")]
-        [StringLength(500, ErrorMessage = "La descripción es requerida. Debe ser menor de 300 caractereres")]
         public virtual string Description { get; set; }
 
-
         [Display(Name = "Fecha de registro")]
-        //[DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         [Required(ErrorMessage = "La fecha es requerida.")]
         [DataType(DataType.Date, ErrorMessage = "Formato de fecha incorrecto.")]
         public virtual DateTime CreateDateTime { get; set; }

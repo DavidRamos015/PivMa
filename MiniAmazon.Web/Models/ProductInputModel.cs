@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MiniAmazon.Web.Models
 {
@@ -52,7 +53,7 @@ namespace MiniAmazon.Web.Models
 
         [Display(Name = "Categoria")]
         [Required(ErrorMessage = "Especificar Categoria.")]
-        [Range(0, 5000, ErrorMessage = "Especificar categoria valida.")]
+        [Remote("jsExistingCategoryID", "Management", ErrorMessage = "Especificar una categoria existente.")]
         public virtual int CategoryId { get; set; }
 
         [Display(Name = "Publicar en Facebook")]

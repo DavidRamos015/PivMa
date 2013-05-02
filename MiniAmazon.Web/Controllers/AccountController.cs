@@ -3,6 +3,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MiniAmazon.Domain;
 using MiniAmazon.Domain.Entities;
+using MiniAmazon.Web.Infrastructure;
 using MiniAmazon.Web.Models;
 
 namespace MiniAmazon.Web.Controllers
@@ -31,28 +32,18 @@ namespace MiniAmazon.Web.Controllers
             ViewBag.Title = "Iniciar sesion";
             var account =
                 _repository.First<Account>(
-                    x => x.Email == accountSignInModel.Email && x.Password == accountSignInModel.Password && x.Locked == false && x.Active == true);
+                    x => x.Email == accountSignInModel.Email && x.Password == accountSignInModel.Password && x.Locked == false && x.Active == true && x.PendingConfirmation == true);
 
             if (account != null)
             {
                 return RedirectToAction("Index", "DashBoard");
             }
+
             return View(accountSignInModel);
         }
 
 
-        public ActionResult ValidateEmail(string email)
-        {
-            var account = _repository.First<Account>(x => x.Email == email);
-            if (account == null)
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(false, JsonRequestBehavior.AllowGet);
-            }
-        }
+
 
 
 
@@ -73,7 +64,9 @@ namespace MiniAmazon.Web.Controllers
         public ActionResult Create_Record(AccountInputModel accountInputModel)
         {
             var account = _mappingEngine.Map<AccountInputModel, Account>(accountInputModel);
-
+            account.PendingConfirmation = true;
+            account.Active = true;
+            account.Locked = false;
 
             var acc = _repository.First<Account>(x => x.Email == accountInputModel.Email);
 
@@ -85,9 +78,8 @@ namespace MiniAmazon.Web.Controllers
 
             _repository.Create(account);
 
-            AccountSignInModel Login = new AccountSignInModel { Email = account.Email, Password = account.Password, RememberMe = false };
-            
-            return SignIn(Login);
+            return RedirectToAction("Index", "DashBoard");
+
         }
 
 
@@ -109,10 +101,10 @@ namespace MiniAmazon.Web.Controllers
             {
                 return RedirectToAction("UserAdminControl");
             }
-            var _AccountLockedInputModel = _mappingEngine.Map<Account, AccountLockedInputModel>(item);
+            var accountLockedInputModel = _mappingEngine.Map<Account, AccountLockedInputModel>(item);
 
-            
-            return View(_AccountLockedInputModel);
+
+            return View(accountLockedInputModel);
         }
 
         [HttpPost]
@@ -122,18 +114,28 @@ namespace MiniAmazon.Web.Controllers
             if (ModelState.IsValid)
             {
                 var item = _mappingEngine.Map<AccountLockedInputModel, Account>(InputModel);
-                item.Active = true;
+                item.Active = InputModel.Active;
+                item.Locked = InputModel.Locked;
+                var message = "";
                 _repository.Update(item);
-                if (!item.Active && item.Locked)
-                    Information("Usuario bloqueado y eliminado");
-                else if (!item.Active && item.Locked)
-                    Information("Usuario eliminado");
-                else if (item.Active && !item.Locked)
-                    Information("Usuario eliminado");
+
+
+                if (!item.Active)
+                    message = ("Usuario eliminado");
+
+                if (item.Locked)
+                    message = ("Usuario bloqueado");
+
+                if (message.Trim().Length > 0)
+                {
+                    Information(message + "\r\n" + "Un correo electronico ha sido enviado al usuario.");
+                    EmailUtility.SendEmail(item.Email, item.Name, InputModel.Comments, message, MailOperationType.UserDisableorLocked, true);
+                }
                 else
                     Information("Cambios realizados");
 
-                return RedirectToAction("Index");
+
+                return RedirectToAction("UserAdminControl","Account");
             }
 
             return View(InputModel);

@@ -30,5 +30,15 @@ namespace MiniAmazon.Web.Models
         [Required]
         [Display(Name = "Bloqueado", ShortName = "Bloquear")]
         public virtual bool Locked { get; set; }
+
+        [Required]
+        [Editable(false)]
+        [Display(Name = "Confirmación Pendiente", ShortName = "Confirmación")]
+        public virtual bool PendingConfirmation { get; set; }
+
+        [Required(ErrorMessage = "Campo requerido.")]
+        [Display(Name = "Razones/Observaciones")]
+        public virtual string Comments { get; set; }
+
     }
 }

@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using MiniAmazon.Domain.Entities;
 using MiniAmazon.Web.Models;
-using Ninject.Modules;
 
 namespace MiniAmazon.Web.Infrastructure
 {
@@ -18,12 +16,32 @@ namespace MiniAmazon.Web.Infrastructure
             Mapper.CreateMap<Product, ProductInputModel>();
             Mapper.CreateMap<ProductInputModel, Product>();
 
-            
+
             Mapper.CreateMap<Account, AccountLockedInputModel>();
             Mapper.CreateMap<AccountLockedInputModel, Account>();
 
-            
+
 
         }
     }
+
+    //public class ValidatingDataController : BootstrapBaseController
+    //{
+
+    //    public static ActionResult IsValid(IRepository repository, Expression<Func<IEntity, bool>> expression)
+    //    {
+    //        var item = repository.First(expression);
+
+    //        if (item == null)
+    //        {
+    //            return Json(true, JsonRequestBehavior.AllowGet);
+    //        }
+    //        else
+    //        {
+    //            return Json(false, JsonRequestBehavior.AllowGet);
+    //        }
+    //    }
+
+
+    //}
 }

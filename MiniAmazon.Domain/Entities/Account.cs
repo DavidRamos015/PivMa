@@ -14,11 +14,15 @@ namespace MiniAmazon.Domain.Entities
 
         public virtual int Age { get; set; }
 
+        public virtual int CountryId { get; set; }
+
         public virtual string Genre { get; set; }
 
         public virtual bool Active { get; set; }
 
         public virtual bool Locked { get; set; }
+
+        public virtual bool PendingConfirmation { get; set; }
 
         public virtual IEnumerable<Sale> Sales
         {
@@ -40,3 +44,4 @@ namespace MiniAmazon.Domain.Entities
         }
     }
 }
+

@@ -41,8 +41,12 @@
   <ItemGroup>
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Categories.cs" />
+    <Compile Include="Entities\EmailsSent.cs" />
+    <Compile Include="Entities\EmailsConfirmationOperation.cs" />
     <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\MailOperationType.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductPendingChanges.cs" />
     <Compile Include="Entities\Sale.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -86,10 +86,10 @@ namespace BootstrapSupport
 
     public static class Alerts
     {
-        public const string SUCCESS = "success";
-        public const string ATTENTION = "attention";
-        public const string ERROR = "error";
-        public const string INFORMATION = "info";
+        public const string SUCCESS = "Realizaco con éxito";
+        public const string ATTENTION = "Alerta";
+        public const string ERROR = "Error";
+        public const string INFORMATION = "Información";
 
         public static string[] ALL{
             get { return new[] {SUCCESS, ATTENTION, INFORMATION, ERROR}; }

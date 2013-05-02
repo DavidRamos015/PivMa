@@ -5,6 +5,7 @@ using AcklenAvenue.Data.NHibernate;
 using DomainDrivenDatabaseDeployer;
 using FluentNHibernate.Cfg.Db;
 using MiniAmazon.Data;
+using MiniAmazon.DatabaseDeployer.Seeder;
 using MiniAmazon.Domain.Entities;
 using NHibernate;
 
@@ -35,8 +36,9 @@ namespace MiniAmazon.DatabaseDeployer
                 dd.Seed(new List<IDataSeeder>
                             {
                                 new AccountSeeder(session),
-                                new SaleSeeder(session)
-                                //new Categories(session)
+                                new SaleSeeder(session),
+                                new CategoriesSeeder(session),
+                                new ProductsSeeder(session)
                             });
                 tx.Commit();
             }

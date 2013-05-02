@@ -8,31 +8,34 @@ namespace MiniAmazon.Web.Models
         public long Id { get; set; }
 
 
-        [Required]
         [Display(Name = "Nombre")]
-        [StringLength(30, ErrorMessage = "El nombre es requerido. Debe ser menor de 30 caractereres")]
+        [Required(ErrorMessage = "El nombre es requerido. ")]
+        [StringLength(30, ErrorMessage = "Debe ser menor de 30 caractereres")]
         public string Name { get; set; }
 
 
-        [Required]
         [Display(Name = "Correo electronico")]
+        [Required(ErrorMessage = "Correo es requerido.")]
         [StringLength(100)]
-        [DataType(DataType.EmailAddress, ErrorMessage = "Correo es requerido, El correo tiene un formato invalido,Debe ser menor de 100 caractereres.")]
-        //[Remote("CheckIfExist", "Account")]
-        [Remote("ValidateEmail", "Account", ErrorMessage = "El correo ya esta registrado, intente con otro.")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "El correo tiene un formato invalido,Debe ser menor de 100 caractereres.")]
+        [Remote("jsExistingUserEmail", "Management", ErrorMessage = "El correo ya esta registrado, intente con otro.")]
         public string Email { get; set; }
 
 
         [Display(Name = "Edad")]
-        [Required]
+        [Required(ErrorMessage = "Edad es requerida.")]
+        [DataType(DataType.Currency, ErrorMessage = "Formato incorrecto")]
         [Range(12, 150)]
-        [DataType(DataType.Currency, ErrorMessage = "Edad es requerida.")]
         public int Age { get; set; }
 
+        [Required(ErrorMessage = "Genero es requerido.")]
         [Display(Name = "Genero")]
-        [Required]
         [StringLength(1, ErrorMessage = "Genero es requerido, Escriba F ó M")]
         public string Genre { get; set; }
+
+        [Required(ErrorMessage = "Pais es requerido.")]
+        [Display(Name = "País")]
+        public int CountryId { get; set; }
 
 
         [Display(Name = "Contraseña")]

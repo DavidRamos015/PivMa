@@ -28,7 +28,11 @@ namespace MiniAmazon.Domain.Entities
 
         public virtual bool Active { get; set; }
 
+        public virtual bool PendingChange { get; set; }
+
         public virtual int CategoryId { get; set; }
+
+        
 
     }
 }

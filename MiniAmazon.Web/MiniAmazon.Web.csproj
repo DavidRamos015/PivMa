@@ -180,6 +180,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AutoMapperConfiguration.cs" />
+    <Compile Include="Infrastructure\EmailUtility.cs" />
     <Compile Include="Models\AccountInputModel.cs" />
     <Compile Include="Models\AccountLockedInputModel.cs" />
     <Compile Include="Models\AccountSignInModel.cs" />

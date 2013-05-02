@@ -25,6 +25,10 @@ namespace BootstrapSupport
                 "~/Content/bootstrap-mvc-validation.css",
                 "~/Content/datepicker.css"
                 ));
+
+            bundles.Add(new StyleBundle("~/content/css-responsive").Include(
+               "~/Content/bootstrap-responsive.css"
+               ));
         }
     }
 }

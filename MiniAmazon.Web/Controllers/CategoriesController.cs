@@ -38,7 +38,8 @@ namespace MiniAmazon.Web.Controllers
 
         public ActionResult Create()
         {
-            return View(new CategoriesInputModel());
+            var item = new CategoriesInputModel { CreateDateTime = DateTime.Now };
+            return View(item);
         }
 
         [HttpPost]
@@ -46,6 +47,14 @@ namespace MiniAmazon.Web.Controllers
         {
             ViewBag.Title = "Crear categoria";
             var account = _mappingEngine.Map<CategoriesInputModel, Categories>(model);
+
+            var magt = new ManagementController(_repository, _mappingEngine);
+            if (magt.ExistingCategoryName(model.Name, (int)model.Id))
+            {
+                Error("El nombre de la categoria ya existe");
+                return View(model);
+            }
+
             account.Active = true;
             _repository.Create(account);
 
@@ -53,9 +62,17 @@ namespace MiniAmazon.Web.Controllers
         }
 
 
+
         public ActionResult Delete(int id)
         {
             var item = _repository.GetById<Categories>(id);
+            var magt = new ManagementController(_repository, _mappingEngine);
+
+            if (magt.IsCategoryInUse(id))
+            {
+                Information("Está categoria no puede ser eliminada porque esta en eso.");
+                return RedirectToAction("index");
+            }
 
             if (item != null)
             {
@@ -88,6 +105,14 @@ namespace MiniAmazon.Web.Controllers
             if (ModelState.IsValid)
             {
                 var category = _mappingEngine.Map<CategoriesInputModel, Categories>(categoryInputModel);
+
+                var magt = new ManagementController(_repository, _mappingEngine);
+                if (magt.ExistingCategoryName(categoryInputModel.Name, (int)categoryInputModel.Id))
+                {
+                    Error("El nombre de la categoria ya existe");
+                    return View(categoryInputModel);
+                }
+
                 category.Active = true;
                 _repository.Update(category);
                 Information("Registro modificado");
@@ -105,6 +130,8 @@ namespace MiniAmazon.Web.Controllers
             var item = _repository.GetById<Categories>(id);
             return View(item);
         }
+
+
 
 
     }

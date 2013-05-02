@@ -17,6 +17,7 @@ namespace MiniAmazon.Data
             _session = session;
         }
 
+
         public T First<T>(Expression<Func<T, bool>> query) where T : class, IEntity
         {
             T firstOrDefault = _session.Query<T>().FirstOrDefault(query);
@@ -43,9 +44,16 @@ namespace MiniAmazon.Data
         public T Update<T>(T itemToUpdate) where T : class, IEntity
         {
             _session.Update(itemToUpdate);
-            //_session.Flush();
-            //_session.SaveOrUpdate(itemToUpdate);
-            
+            _session.Flush();
+
+
+            return itemToUpdate;
+        }
+
+        public T Update2<T>(T itemToUpdate)
+        {
+            _session.Update(itemToUpdate);
+            _session.Flush();
             return itemToUpdate;
         }
 

@@ -37,7 +37,8 @@ namespace MiniAmazon.Web.Controllers
 
         public ActionResult Create_Record()
         {
-            return View(new ProductInputModel());
+            var item = new ProductInputModel {CreateDateTime = DateTime.Now, PostOnFacebook = true};
+            return View(item);
         }
 
         [HttpPost]
