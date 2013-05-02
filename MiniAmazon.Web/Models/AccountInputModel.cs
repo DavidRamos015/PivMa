@@ -42,14 +42,14 @@ namespace MiniAmazon.Web.Models
         [Required(ErrorMessage = "Contraseña requerida")]
         [StringLength(15, MinimumLength = 8, ErrorMessage = "Longitud de la contraseña es invalida")]
         [DataType(DataType.Password)]
-        [Remote("VerifyPasswordMatch", "Account", "PasswordConfirm", ErrorMessage = "Las contraseña no coincide.")]
+        //[Remote("VerifyPasswordMatch", "Account", "PasswordConfirm", ErrorMessage = "Las contraseña no coincide.")]
         public string Password { get; set; }
 
         [Display(Name = "Confirmar contraseña")]
         [Required(ErrorMessage = "Confirmacion de contraseña es requerida")]
         [StringLength(15, MinimumLength = 8, ErrorMessage = "Longitud de la contraseña es invalida")]
         [DataType(DataType.Password)]
-        [Remote("VerifyPasswordMatch", "Account", "Password", ErrorMessage = "Las contraseña no coincide.")]
+        //[Remote("VerifyPasswordMatch", "Account", "Password", ErrorMessage = "Las contraseña no coincide.")]
         public string PasswordConfirm { get; set; }
 
     }

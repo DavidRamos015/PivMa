@@ -27,6 +27,10 @@ namespace MiniAmazon.Web.Infrastructure
             Mapper.CreateMap<Account, AccountLockedInputModel>();
             Mapper.CreateMap<AccountLockedInputModel, Account>();
 
+            Mapper.CreateMap<EmailsConfirmationOperation, ConfirmationsInputModel>();
+            Mapper.CreateMap<ConfirmationsInputModel, EmailsConfirmationOperation>();
+
+            
         }
     }
 

@@ -109,6 +109,13 @@ namespace MiniAmazon.Web.Controllers
         [HttpPost]
         public ActionResult Create_Record(AccountInputModel accountInputModel)
         {
+
+            if (accountInputModel.PasswordConfirm != accountInputModel.Password)
+            {
+                Attention("La contraseña no coincide.");
+                return View(accountInputModel);
+            }
+
             var account = _mappingEngine.Map<AccountInputModel, Account>(accountInputModel);
             account.PendingConfirmation = true;
             account.Active = true;
@@ -120,7 +127,7 @@ namespace MiniAmazon.Web.Controllers
             if (magt.ExistingUserEmail(account.Email))
             {
                 Attention("El correo ya esta registrado, intente con otro.");
-                return View(account);
+                return View(accountInputModel);
             }
 
             _repository.Create(account);
@@ -134,6 +141,7 @@ namespace MiniAmazon.Web.Controllers
                                    MailOperationType.RegisterAccount, true);
 
             Information("Un mensaje de confirmación de la cuenta ha sido enviado a su correo.");
+
             return RedirectToAction("Index", "DashBoard");
 
         }
@@ -163,6 +171,7 @@ namespace MiniAmazon.Web.Controllers
         {
             ViewBag.Title = "Eliminar/Bloquear";
             var item = _repository.First<Account>(x => x.Id == id);
+            
             if (item == null)
             {
                 return RedirectToAction("UserAdminControl");

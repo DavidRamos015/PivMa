@@ -23,7 +23,7 @@ namespace MiniAmazon.Web.Models
 
 
         [Required]
-        [Display(Name = "Eliminar")]
+        [Display(Name = "Activo")]
         public virtual bool Active { get; set; }
 
 
