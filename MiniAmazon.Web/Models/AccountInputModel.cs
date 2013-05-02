@@ -18,7 +18,7 @@ namespace MiniAmazon.Web.Models
         [Required(ErrorMessage = "Correo es requerido.")]
         [StringLength(100)]
         [DataType(DataType.EmailAddress, ErrorMessage = "El correo tiene un formato invalido,Debe ser menor de 100 caractereres.")]
-//        [Remote("jsExistingUserEmail", "Management", ErrorMessage = "El correo ya esta registrado, intente con otro.")]
+        //        [Remote("jsExistingUserEmail", "Management", ErrorMessage = "El correo ya esta registrado, intente con otro.")]
         public string Email { get; set; }
 
 
@@ -42,12 +42,14 @@ namespace MiniAmazon.Web.Models
         [Required(ErrorMessage = "Contraseña requerida")]
         [StringLength(15, MinimumLength = 8, ErrorMessage = "Longitud de la contraseña es invalida")]
         [DataType(DataType.Password)]
+        [Remote("VerifyPasswordMatch", "Account", "PasswordConfirm", ErrorMessage = "Las contraseña no coincide.")]
         public string Password { get; set; }
 
         [Display(Name = "Confirmar contraseña")]
         [Required(ErrorMessage = "Confirmacion de contraseña es requerida")]
         [StringLength(15, MinimumLength = 8, ErrorMessage = "Longitud de la contraseña es invalida")]
         [DataType(DataType.Password)]
+        [Remote("VerifyPasswordMatch", "Account", "Password", ErrorMessage = "Las contraseña no coincide.")]
         public string PasswordConfirm { get; set; }
 
     }

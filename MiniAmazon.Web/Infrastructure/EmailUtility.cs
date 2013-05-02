@@ -55,12 +55,11 @@ namespace MiniAmazon.Web.Infrastructure
 
                 mailMessage.Subject = "Pivma - " + subject;
                 mailMessage.IsBodyHtml = true;
-                mailMessage.Body = body;
+                mailMessage.Body = "<br> <br>" + body;
 
-                mailMessage.Body += Environment.NewLine + Environment.NewLine + Environment.NewLine;
-                mailMessage.Body += "Correo generado automaticamente." + Environment.NewLine +
-                                    "Favor no responda, no brindaremos soporte a ningun mensaje enviado a este correo" +
-                                    Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                mailMessage.Body += "<br> <br> <br>";
+                mailMessage.Body += "Correo generado automaticamente. <br>" +
+                                    "Favor no responda, no brindaremos soporte a ningun mensaje enviado a este correo <br> <br> <br>";
 
 
                 //FileStream fs = new FileStream("E:\\TestFolder\\test.pdf",
@@ -69,7 +68,7 @@ namespace MiniAmazon.Web.Infrastructure
                 //                   MediaTypeNames.Application.Octet);
                 //m.Attachments.Add(a);
 
-                var str = "<html><body><h4>" + mailMessage.Body + "</h4><br/><img" +
+                var str = "<html><body><h5>" + mailMessage.Body + "</h5><br/><img" +
                           "src=\"cid:image1\"></body></html>";
                 var av = AlternateView.CreateAlternateViewFromString(str, null, MediaTypeNames.Text.Html);
 

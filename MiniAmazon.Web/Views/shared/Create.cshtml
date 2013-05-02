@@ -1,7 +1,7 @@
 @{
-    ViewBag.Title = "Nuevo registro";
-    Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
-    
+    //ViewBag.Title = "Nuevo registro";
+    //Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
+    Layout = "~/Views/shared/_pivma.main.dashboard.Header.cshtml";
 }
 
 
@@ -12,10 +12,11 @@
 {
     @Html.ValidationSummary(true)
     <fieldset class="form-horizontal">
-        <legend> <small>Crear registro</small></legend>
+        <legend> <small>@ViewBag.Title</small></legend>
         @foreach (var property in Model.VisibleProperties())
         {
-            using(Html.ControlGroupFor(property.Name)){
+            using (Html.ControlGroupFor(property.Name))
+            {
                 @Html.Label(property.Name.ToSeparatedWords(), new { @class = "control-label" })
                  <div class="controls">
                      @Html.Editor(property.Name, new { @class = "input-xlarge" })

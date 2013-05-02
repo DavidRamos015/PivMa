@@ -1,4 +1,4 @@
-@{
+﻿@{
     //ViewBag.Title = "Modificar";
     //Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
     Layout = "~/Views/shared/_pivma.main.dashboard.Header.cshtml";
@@ -24,18 +24,18 @@
         }
 		<div class="form-actions">
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
-            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn " })
+            @Html.ActionLink("Cancelar", "GetPendingApprovalProductList", null, new { @class = "btn " })
           </div>
     </fieldset>
 }
 <div>
-    @Html.ActionLink("Atras", "Index")
+    @Html.ActionLink("Atras", "GetPendingApprovalProductList")
 </div>
 
 
 
-@section Scripts {
+@*@section Scripts {
 <script type="text/javascript">
     $('.datepicker').datepicker(); //Initialise any date pickers
 </script>
-}
+}*@

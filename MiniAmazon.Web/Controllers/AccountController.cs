@@ -23,14 +23,44 @@ namespace MiniAmazon.Web.Controllers
         public ActionResult PasswordRecovery()
         {
             ViewBag.Title = "Recuperar contraseña";
-            return View(new AccountSignInModel());
+            return View(new AccountRecoveryPasswordInputModel());
         }
 
         [HttpPost]
-        public ActionResult PasswordRecovery(AccountSignInModel InpuModel)
+        public ActionResult PasswordRecovery(AccountRecoveryPasswordInputModel inpuModel)
         {
             ViewBag.Title = "Recuperar contraseña";
-            return View(new AccountSignInModel());
+
+
+            var magt = new ManagementController(_repository, _mappingEngine);
+
+            if (!magt.ExistingUserEmail(inpuModel.Email))
+            {
+                Attention("No se ha encontrado ninguna cuenta para el correo electronico especificado.");
+                return View(inpuModel);
+            }
+
+            var account = _repository.First<Account>(x => x.Email == inpuModel.Email && x.Locked == false && x.Active == true);
+
+
+            var codetoconfirm = EmailUtility.SaveRegisterEmailConfirmationOperation(_repository, "DashBoard", "Index",
+                                                                MailOperationType.PasswordChange, account.Id);
+
+            account.PendingConfirmation = true;
+            _repository.Update(account);
+
+            EmailUtility.SendEmail(_repository,
+                                   account.Email,
+                                   account.Name,
+                                   "Por favor haz click en la direccion especificada he ingresa el siguiente codigo:<br> <br> Codigo:" +
+                                   codetoconfirm + "<br>Dirección" + Utility.UrlToConfirm,
+                                   "Recuperación de contraseña",
+                                   MailOperationType.PasswordChange,
+                                   true);
+
+            Information("Un mensaje con información para recuperar cambiar la clave ha sido enviado a su correo.");
+
+            return RedirectToAction("Index", "DashBoard");
         }
 
 
@@ -46,7 +76,7 @@ namespace MiniAmazon.Web.Controllers
             ViewBag.Title = "Iniciar sesion";
             var account =
                 _repository.First<Account>(
-                    x => x.Email == accountSignInModel.Email && x.Password == accountSignInModel.Password && x.Locked == false && x.Active == true && x.PendingConfirmation == true);
+                    x => x.Email == accountSignInModel.Email && x.Password == accountSignInModel.Password && x.Locked == false && x.Active == true);
 
             if (account != null)
             {
@@ -61,10 +91,6 @@ namespace MiniAmazon.Web.Controllers
 
             return View(accountSignInModel);
         }
-
-
-
-
 
 
         public ActionResult Index()
@@ -121,6 +147,16 @@ namespace MiniAmazon.Web.Controllers
             ViewBag.Title = "Administración de usuarios";
             return View(listRecord);
 
+        }
+
+        public ActionResult VerifyPasswordMatch(string password, string confirmPassword)
+        {
+            if (password == confirmPassword)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Edit(int id)

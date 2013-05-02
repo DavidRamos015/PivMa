@@ -45,7 +45,7 @@
                             @Html.TryPartial("_actions", model)                            
             var routevalues = model.GetIdValue();  
 
-                            <li>@Html.ActionLink("Eliminar/Bloquear", "Edit", routevalues)</li>
+                            <li>@Html.ActionLink("Aprobar/Rechazar", "ApprovalOrDeniedChanges", routevalues)</li>
                         }
                     </ul>
                 </div>

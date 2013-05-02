@@ -1,0 +1,6 @@
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain.Specs\bin\Debug\MiniAmazon.Domain.Specs.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain.Specs\bin\Debug\MiniAmazon.Domain.Specs.pdb
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain.Specs\bin\Debug\Machine.Specifications.Clr4.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain.Specs\bin\Debug\Machine.Specifications.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain.Specs\obj\Debug\MiniAmazon.Domain.Specs.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain.Specs\obj\Debug\MiniAmazon.Domain.Specs.pdb

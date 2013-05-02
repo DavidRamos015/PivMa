@@ -185,10 +185,12 @@
     <Compile Include="Infrastructure\Utility.cs" />
     <Compile Include="Models\AccountInputModel.cs" />
     <Compile Include="Models\AccountLockedInputModel.cs" />
+    <Compile Include="Models\AccountRecoveryPasswordInputModel.cs" />
     <Compile Include="Models\AccountSignInModel.cs" />
     <Compile Include="Models\CategoriesInputModel.cs" />
     <Compile Include="Models\HomeInputModel.cs" />
     <Compile Include="Models\ProductInputModel.cs" />
+    <Compile Include="Models\ProductUpdateApprovalInputModel.cs" />
     <Compile Include="Models\ProductUpdateInputModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />
@@ -272,6 +274,9 @@
     <Content Include="Views\shared\_pivma.main.dashboard.Header.cshtml" />
     <Content Include="Views\Account\UserAdminControl.cshtml" />
     <Content Include="Views\shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Account\PasswordRecovery.cshtml" />
+    <Content Include="Views\Product\GetPendingApprovalProductList.cshtml" />
+    <Content Include="Views\Product\ApprovalOrDeniedChanges.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

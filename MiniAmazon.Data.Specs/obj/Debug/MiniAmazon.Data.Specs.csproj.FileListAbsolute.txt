@@ -1,0 +1,4 @@
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data.Specs\bin\Debug\MiniAmazon.Data.Specs.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data.Specs\bin\Debug\MiniAmazon.Data.Specs.pdb
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data.Specs\obj\Debug\MiniAmazon.Data.Specs.dll
+C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Data.Specs\obj\Debug\MiniAmazon.Data.Specs.pdb

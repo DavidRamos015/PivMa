@@ -98,7 +98,7 @@ namespace MiniAmazon.Web.Controllers
 
         public bool ExistingUserEmail(string email)
         {
-            var account = _repository.First<Account>(x => x.Email == email);
+            var account = _repository.First<Account>(x => x.Email == email && x.Active == true && x.Locked == false);
             if (account != null)
             {
                 return true;
@@ -117,8 +117,8 @@ namespace MiniAmazon.Web.Controllers
         #endregion
 
 
-        
-     
+
+
 
     }
 }
