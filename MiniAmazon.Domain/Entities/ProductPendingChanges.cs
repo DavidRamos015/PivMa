@@ -37,5 +37,34 @@ namespace MiniAmazon.Domain.Entities
 
         public virtual long ProductId { get; set; }
 
+        public static ProductPendingChanges CopyData(Product item)
+        {
+            var itemWithChanges = new ProductPendingChanges
+            {
+                CreateDateTime = item.CreateDateTime,
+                CreateDateTimePendingChange = DateTime.Now,
+                Comments = "",
+                CommentsWhyNotApproved = "",
+                CategoryId = item.CategoryId,
+                Description = item.Description,
+                Inventory = item.Inventory,
+                Name = item.Name,
+                PendingChange = true,
+                Picture = item.Picture,
+                PostOnFacebook = item.PostOnFacebook,
+                Price = item.Price,
+                YoutubeLink = item.YoutubeLink,
+                ProductId = item.Id,
+                Active = item.Active,
+                Approved = false,
+                AccountId = item.AccountId
+
+            };
+
+            return itemWithChanges;
+        }
+
     }
+
+
 }

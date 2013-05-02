@@ -77,14 +77,16 @@ namespace MiniAmazon.Web.Controllers
                 return RedirectToAction("Index_Record");
             }
 
-            var itemInputModel = _mappingEngine.Map<Product, ProductUpdateInputModel>(item);
+            var productChange = ProductPendingChanges.CopyData(item);
+            var model = _mappingEngine.Map<ProductPendingChanges, ProductUpdateInputModel>(productChange);
+
 
             if (item.PendingChange)
             {
-                Attention("Su producto tiene una modificación pendiente de aprovar.");
+                Attention("Su producto tiene una modificación pendiente de aprobar.");
             }
 
-            return View(itemInputModel);
+            return View(model);
         }
 
         [HttpPost]
@@ -94,43 +96,37 @@ namespace MiniAmazon.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                var item = _mappingEngine.Map<ProductUpdateInputModel, Product>(itemModel);
 
-                if (item.PendingChange)
+                var item = _mappingEngine.Map<ProductUpdateInputModel, ProductPendingChanges>(itemModel);
+                var product = _repository.First<Product>(x => x.Id == itemModel.ProductId && x.Active == true);
+
+                if (product == null)
+                {
+                    Error("No se encontro el producto relacionado con esta solicitud.");
+                    return View(item);
+                }
+
+                if (product.PendingChange)
                 {
                     Attention("Su producto tiene una modificación pendiente de aprobar, Este aún no puede ser modificado.");
                     return RedirectToAction("Index_Record");
                 }
 
-                var itemWithChanges = new ProductPendingChanges
-                    {
-                        CreateDateTime = item.CreateDateTime,
-                        CreateDateTimePendingChange = DateTime.Now,
-                        Comments = itemModel.Comments,
-                        CommentsWhyNotApproved = "",
-                        CategoryId = item.CategoryId,
-                        Description = item.Description,
-                        Inventory = item.Inventory,
-                        Id = item.Id,
-                        Name = item.Name,
-                        PendingChange = true,
-                        Picture = item.Picture,
-                        PostOnFacebook = item.PostOnFacebook,
-                        Price = item.Price,
-                        YoutubeLink = item.YoutubeLink
-                    };
-
                 // EmailUtility.SaveRegisterEmailConfirmationOperation(_repository, "Confirmations", "ConfirmOperation", MailOperationType.ProductDataChange, item.Id);
+                
+                item.PendingChange = true;
+                product.PendingChange = true;
 
-                _repository.Create(itemWithChanges);
+                _repository.Create(item);
+                _repository.Update(product);
 
                 Information("Su cambio esta pendiente de aplicar, una solicitud a sido enviada a los administradores de nuestro sitio.");
 
                 EmailUtility.SendEmail(_repository, Utility.AdminEmail, "Vendedor en Pivma",
-                                       "Estimados srs.\r\n He ingresado erroneamente la información de mi producto y me gustaria que aprueben mis cambios:\r\n " + itemWithChanges.Comments + "\r\nMuchas gracias de antemano y disculpan las molestias",
-                                       "Modificacion de publicación",
-                                       MailOperationType.ProductDataChange,
-                                       true
+                                        body: "Estimados sres.<br> <br> He ingresado erroneamente la información de mi producto y me gustaria que aprueben mis cambios:<br><br> Razon:" + item.Comments + "<br> Codigo de producto:" + item.ProductId.ToString() + "<br> Codigo solicitud:" + item.Id.ToString() + "<br><br>Muchas gracias de antemano y disculpan las molestias",
+                                        subject: "Modificacion de publicación",
+                                        mailOperationType: MailOperationType.ProductDataChange,
+                                        async: true
                                        );
 
 

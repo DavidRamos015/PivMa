@@ -16,8 +16,10 @@ namespace MiniAmazon.Web.Infrastructure
             Mapper.CreateMap<Product, ProductInputModel>();
             Mapper.CreateMap<ProductInputModel, Product>();
 
-            Mapper.CreateMap<Product, ProductUpdateInputModel>();
-            Mapper.CreateMap<ProductUpdateInputModel, Product>();
+            Mapper.CreateMap<ProductPendingChanges, ProductUpdateInputModel>();
+            Mapper.CreateMap<ProductUpdateInputModel, ProductPendingChanges>();
+
+            
 
             
             Mapper.CreateMap<Account, AccountLockedInputModel>();

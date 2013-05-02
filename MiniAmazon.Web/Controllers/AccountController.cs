@@ -107,6 +107,7 @@ namespace MiniAmazon.Web.Controllers
                                    "\r\n url:" + Utility.UrlToConfirm, "Confirmación de cuenta",
                                    MailOperationType.RegisterAccount, true);
 
+            Information("Un mensaje de confirmación de la cuenta ha sido enviado a su correo.");
             return RedirectToAction("Index", "DashBoard");
 
         }
