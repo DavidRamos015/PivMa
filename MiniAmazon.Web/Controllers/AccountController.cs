@@ -89,6 +89,7 @@ namespace MiniAmazon.Web.Controllers
                 return RedirectToAction("Index", "DashBoard");
             }
 
+            Information("Credenciales incorrectas.");
             return View(accountSignInModel);
         }
 
@@ -171,7 +172,7 @@ namespace MiniAmazon.Web.Controllers
         {
             ViewBag.Title = "Eliminar/Bloquear";
             var item = _repository.First<Account>(x => x.Id == id);
-            
+
             if (item == null)
             {
                 return RedirectToAction("UserAdminControl");

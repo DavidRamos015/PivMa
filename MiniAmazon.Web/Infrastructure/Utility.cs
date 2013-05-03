@@ -10,7 +10,7 @@ namespace MiniAmazon.Web.Infrastructure
         public static string AdminEmail = "mformytest@gmail.com";
         public static string AdminPassWord = "pwmformytest123";
         public static string AdminName = "David Ramos";
-        public static string UrlToConfirm = "http://localhost:5092/Confirmations/Create";
+        public static string UrlToConfirm = "http://localhost:5092/Confirmations/Create_Record";
 
     }
 }
