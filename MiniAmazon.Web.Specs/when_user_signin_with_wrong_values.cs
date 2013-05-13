@@ -9,7 +9,7 @@ namespace MiniAmazon.Web.Specs
     {
         private Establish context = () =>
             {
-                _accountSignInModel = new AccountSignInModel
+                _accountSignInModel = new MyAccountSignInModel
                     {
                         Email = "camilo1@me.com",
                         Password = "passssd21123",
@@ -29,7 +29,7 @@ namespace MiniAmazon.Web.Specs
                 _result.ShouldBeAView();
             };
 
-        private static AccountSignInModel _accountSignInModel;
+        private static MyAccountSignInModel _accountSignInModel;
         private static ActionResult _result;
     }
 }

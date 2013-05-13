@@ -17,12 +17,12 @@ namespace MiniAmazon.Web.Specs
             MockRepository = new Mock<IRepository>();
             MockMappingEngine = new Mock<IMappingEngine>();
 
-            AccountController = new AccountController(MockRepository.Object, MockMappingEngine.Object);
+            AccountController = new MyAccountController(MockRepository.Object, MockMappingEngine.Object);
 
         };
 
         protected static Mock<IRepository> MockRepository;
         protected static Mock<IMappingEngine> MockMappingEngine;
-        protected static AccountController AccountController;
+        protected static MyAccountController AccountController;
     }
 }

@@ -8,7 +8,7 @@ namespace MiniAmazon.Web.Infrastructure
     {
         public static void Configure()
         {
-            Mapper.CreateMap<AccountInputModel, Account>();
+            Mapper.CreateMap<MyAccountInputModel, Account>();
             Mapper.CreateMap<CategoriesInputModel, Categories>();
             Mapper.CreateMap<Categories, CategoriesInputModel>();
 
@@ -24,8 +24,8 @@ namespace MiniAmazon.Web.Infrastructure
             Mapper.CreateMap<ProductUpdateApprovalInputModel, ProductPendingChanges>();
             
 
-            Mapper.CreateMap<Account, AccountLockedInputModel>();
-            Mapper.CreateMap<AccountLockedInputModel, Account>();
+            Mapper.CreateMap<Account, MyAccountLockedInputModel>();
+            Mapper.CreateMap<MyAccountLockedInputModel, Account>();
 
             Mapper.CreateMap<EmailsConfirmationOperation, ConfirmationsInputModel>();
             Mapper.CreateMap<ConfirmationsInputModel, EmailsConfirmationOperation>();

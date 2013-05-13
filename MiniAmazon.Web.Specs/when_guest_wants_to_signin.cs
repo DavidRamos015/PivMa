@@ -18,7 +18,7 @@ namespace MiniAmazon.Web.Specs
 
         private It should_return_a_view_with_a_signin_model = () =>
             {
-                _result.ShouldBeAView().And().ShouldHaveModelOfType<AccountSignInModel>();
+                _result.ShouldBeAView().And().ShouldHaveModelOfType<MyAccountSignInModel>();
             };
 
         private static ActionResult _result;

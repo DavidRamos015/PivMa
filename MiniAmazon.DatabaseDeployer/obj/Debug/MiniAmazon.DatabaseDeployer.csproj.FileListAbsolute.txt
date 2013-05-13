@@ -86,3 +86,25 @@ C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4
 C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.DatabaseDeployer\bin\Debug\Iesi.Collections.xml
 C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.DatabaseDeployer\bin\Debug\NHibernate.xml
 C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.DatabaseDeployer\obj\Debug\MiniAmazon.DatabaseDeployer.csprojResolveAssemblyReference.cache
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\App.config
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\local.config
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\MiniAmazon.DatabaseDeployer.exe.config
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\MiniAmazon.DatabaseDeployer.exe
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\MiniAmazon.DatabaseDeployer.pdb
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\AcklenAvenue.Data.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\AcklenAvenue.Data.NHibernate.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\DomainDrivenDatabaseDeployer.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\FizzWare.NBuilder.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\FluentNHibernate.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\Iesi.Collections.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\MiniAmazon.Data.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\MiniAmazon.Domain.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\NHibernate.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\MiniAmazon.Data.pdb
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\MiniAmazon.Domain.pdb
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\FluentNHibernate.xml
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\Iesi.Collections.xml
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\bin\Debug\NHibernate.xml
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\obj\Debug\MiniAmazon.DatabaseDeployer.csprojResolveAssemblyReference.cache
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\obj\Debug\MiniAmazon.DatabaseDeployer.exe
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.DatabaseDeployer\obj\Debug\MiniAmazon.DatabaseDeployer.pdb

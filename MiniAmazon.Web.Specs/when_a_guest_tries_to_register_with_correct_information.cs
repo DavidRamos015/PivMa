@@ -10,14 +10,14 @@ namespace MiniAmazon.Web.Specs
 {
     public class when_a_guest_tries_to_register_with_correct_information : given_an_account_controller_context
     {
-        private static AccountInputModel _accountInputModel;
+        private static MyAccountInputModel _accountInputModel;
         private static ActionResult _result;
         private static Account _account;
         private static Account _accountMapped;
 
         private Establish context = () =>
             {
-                _accountInputModel = new AccountInputModel
+                _accountInputModel = new MyAccountInputModel
                     {
                         Email = "camilo@me.com",
                         Name = "Camilo",
@@ -46,7 +46,7 @@ namespace MiniAmazon.Web.Specs
                     .Returns(_account);*/
             };
 
-        private Because of = () => { _result = AccountController.Create(_accountInputModel); };
+        private Because of = () => { _result = AccountController.Create_Record(_accountInputModel); };
         private It should_map_account_input_model_to_account_model = () => { _account.ShouldBeLike(_accountMapped); };
 
         private It should_redirect_to_dashboard_action =

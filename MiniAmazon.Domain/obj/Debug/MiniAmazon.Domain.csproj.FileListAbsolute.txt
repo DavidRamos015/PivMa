@@ -18,3 +18,8 @@ C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4
 C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain\obj\Debug\MiniAmazon.Domain.csprojResolveAssemblyReference.cache
 C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain\obj\Debug\MiniAmazon.Domain.dll
 C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Domain\obj\Debug\MiniAmazon.Domain.pdb
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Domain\bin\Debug\MiniAmazon.Domain.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Domain\bin\Debug\MiniAmazon.Domain.pdb
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Domain\obj\Debug\MiniAmazon.Domain.csprojResolveAssemblyReference.cache
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Domain\obj\Debug\MiniAmazon.Domain.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Domain\obj\Debug\MiniAmazon.Domain.pdb

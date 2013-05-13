@@ -56,6 +56,14 @@
     <Reference Include="DataAnnotationsExtensions">
       <HintPath>..\packages\DataAnnotationsExtensions.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\facebook\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="FacebookLoginButton, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\facebook\FacebookLoginButton.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate, Version=1.3.0.733, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
@@ -168,7 +176,8 @@
     <Compile Include="BootstrapSupport\HtmlHelpers\GlyphIcons.cs" />
     <Compile Include="BootstrapSupport\HtmlHelpers\Paging.cs" />
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FbAccountController.cs" />
+    <Compile Include="Controllers\MyAccountController.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ConfirmationsController.cs" />
@@ -177,22 +186,30 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
+    <Compile Include="Controllers\FbWallMessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AutoMapperConfiguration.cs" />
     <Compile Include="Infrastructure\EmailUtility.cs" />
+    <Compile Include="Infrastructure\Helper.cs" />
+    <Compile Include="Infrastructure\Picture.cs" />
     <Compile Include="Infrastructure\Utility.cs" />
-    <Compile Include="Models\AccountInputModel.cs" />
-    <Compile Include="Models\AccountLockedInputModel.cs" />
-    <Compile Include="Models\AccountRecoveryPasswordInputModel.cs" />
-    <Compile Include="Models\AccountSignInModel.cs" />
+    <Compile Include="Models\FacebookLocation.cs" />
+    <Compile Include="Models\FacebookUserModel.cs" />
+    <Compile Include="Models\MethodResult.cs" />
+    <Compile Include="Models\MyAccountInputModel.cs" />
+    <Compile Include="Models\MyAccountLockedInputModel.cs" />
+    <Compile Include="Models\MyAccountRecoveryPasswordInputModel.cs" />
+    <Compile Include="Models\MyAccountSignInModel.cs" />
     <Compile Include="Models\CategoriesInputModel.cs" />
     <Compile Include="Models\ConfirmationsInputModel.cs" />
+    <Compile Include="Models\FacebookLoginModel.cs" />
     <Compile Include="Models\HomeInputModel.cs" />
     <Compile Include="Models\ProductInputModel.cs" />
     <Compile Include="Models\ProductUpdateApprovalInputModel.cs" />
     <Compile Include="Models\ProductUpdateInputModel.cs" />
+    <Compile Include="Models\WallMessageModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />
     <Compile Include="NavigationRoutes\NavigationExtensions.cs" />
@@ -217,6 +234,7 @@
     <Content Include="scripts\bootstrap-datepicker.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\Facebook.js" />
     <Content Include="scripts\html5shiv.js" />
     <Content Include="local.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -262,7 +280,7 @@
     <Content Include="Views\ExampleLayouts\Narrow.cshtml" />
     <Content Include="Views\ExampleLayouts\Marketing.cshtml" />
     <Content Include="Views\ExampleLayouts\Fluid.cshtml" />
-    <Content Include="Views\Account\SignIn.cshtml" />
+    <Content Include="Views\MyAccount\SignIn.cshtml" />
     <Content Include="Views\DashBoard\Index.cshtml" />
     <Content Include="Views\Management\Menu.cshtml" />
     <Content Include="Views\shared\Edit.cshtml" />
@@ -273,11 +291,18 @@
     <Content Include="Views\shared\Edit_Record.cshtml" />
     <Content Include="Views\shared\Index_Record.cshtml" />
     <Content Include="Views\shared\_pivma.main.dashboard.Header.cshtml" />
-    <Content Include="Views\Account\UserAdminControl.cshtml" />
+    <Content Include="Views\MyAccount\UserAdminControl.cshtml" />
     <Content Include="Views\shared\EditorTemplates\Date.cshtml" />
-    <Content Include="Views\Account\PasswordRecovery.cshtml" />
+    <Content Include="Views\MyAccount\PasswordRecovery.cshtml" />
     <Content Include="Views\Product\GetPendingApprovalProductList.cshtml" />
     <Content Include="Views\Product\ApprovalOrDeniedChanges.cshtml" />
+    <Content Include="Views\shared\_Layout.cshtml" />
+    <Content Include="Views\FbAccount\UserDetails.cshtml" />
+    <Content Include="Views\FbAccount\Login.cshtml" />
+    <Content Include="Views\FbWallMessage\Index.cshtml" />
+    <Content Include="Views\FbWallMessage\CreatedSuccessfully.cshtml" />
+    <Content Include="Views\FbWallMessage\WallMessageError.cshtml" />
+    <Content Include="Views\shared\_Navigation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

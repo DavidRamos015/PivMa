@@ -9,7 +9,7 @@ namespace MiniAmazon.Web.Specs
     {
         private Establish context = () =>
             {
-                _accountSignInModel = new AccountSignInModel
+                _accountSignInModel = new MyAccountSignInModel
                     {
                         Email = "camilo@me.com",
                         Password = "pass123",
@@ -26,7 +26,7 @@ namespace MiniAmazon.Web.Specs
                 _result.ShouldBeARedirectToRoute().And().ActionName().ShouldEqual("Index");
             };
 
-        private static AccountSignInModel _accountSignInModel;
+        private static MyAccountSignInModel _accountSignInModel;
         private static ActionResult _result;
     }
 }
