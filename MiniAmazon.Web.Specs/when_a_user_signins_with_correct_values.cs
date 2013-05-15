@@ -5,28 +5,28 @@ using MiniAmazon.Web.Models;
 
 namespace MiniAmazon.Web.Specs
 {
-    public class when_a_user_signins_with_correct_values : given_an_account_controller_context
-    {
-        private Establish context = () =>
-            {
-                _accountSignInModel = new MyAccountSignInModel
-                    {
-                        Email = "camilo@me.com",
-                        Password = "pass123",
-                        RememberMe = true
-                    };
-            };
+    //public class when_a_user_signins_with_correct_values : given_an_account_controller_context
+    //{
+    //    private Establish context = () =>
+    //        {
+    //            _accountSignInModel = new MyAccountSignInModel
+    //                {
+    //                    Email = "camilo@me.com",
+    //                    Password = "pass123",
+    //                    RememberMe = true
+    //                };
+    //        };
 
-        private Because of = () => {
-                                       _result = AccountController.SignIn(_accountSignInModel);
-        };
+    //    private Because of = () => {
+    //                                   _result = AccountController.SignIn(_accountSignInModel);
+    //    };
 
-        private It should_redirect_to_action_index = () =>
-            {
-                _result.ShouldBeARedirectToRoute().And().ActionName().ShouldEqual("Index");
-            };
+    //    private It should_redirect_to_action_index = () =>
+    //        {
+    //            _result.ShouldBeARedirectToRoute().And().ActionName().ShouldEqual("Index");
+    //        };
 
-        private static MyAccountSignInModel _accountSignInModel;
-        private static ActionResult _result;
-    }
+    //    private static MyAccountSignInModel _accountSignInModel;
+    //    private static ActionResult _result;
+    //}
 }

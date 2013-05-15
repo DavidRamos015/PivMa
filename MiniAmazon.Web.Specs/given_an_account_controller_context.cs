@@ -10,19 +10,19 @@ using Moq;
 
 namespace MiniAmazon.Web.Specs
 {
-    public class given_an_account_controller_context
-    {
-        private Establish context = () =>
-            {
-                MockRepository = new Mock<IRepository>();
-                MockMappingEngine = new Mock<IMappingEngine>();
+    //public class given_an_account_controller_context
+    //{
+    //    private Establish context = () =>
+    //        {
+    //            MockRepository = new Mock<IRepository>();
+    //            MockMappingEngine = new Mock<IMappingEngine>();
 
-                AccountController = new MyAccountController(MockRepository.Object, MockMappingEngine.Object);
+    //            AccountController = new MyAccountController(MockRepository.Object, MockMappingEngine.Object);
 
-            };
+    //        };
 
-        protected static Mock<IRepository> MockRepository;
-        protected static Mock<IMappingEngine> MockMappingEngine;
-        protected static MyAccountController AccountController;
-    }
+    //    protected static Mock<IRepository> MockRepository;
+    //    protected static Mock<IMappingEngine> MockMappingEngine;
+    //    protected static MyAccountController AccountController;
+    //}
 }

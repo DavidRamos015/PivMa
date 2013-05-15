@@ -5,22 +5,22 @@ using MiniAmazon.Web.Models;
 
 namespace MiniAmazon.Web.Specs
 {
-    public class when_guest_wants_to_signin : given_an_account_controller_context
-    {
-        private Establish context = () =>
-            {
+    //public class when_guest_wants_to_signin : given_an_account_controller_context
+    //{
+    //    private Establish context = () =>
+    //        {
                 
-            };
+    //        };
 
-        private Because of = () => {
-                                       _result = AccountController.SignIn();
-        };
+    //    private Because of = () => {
+    //                                   _result = AccountController.SignIn();
+    //    };
 
-        private It should_return_a_view_with_a_signin_model = () =>
-            {
-                _result.ShouldBeAView().And().ShouldHaveModelOfType<MyAccountSignInModel>();
-            };
+    //    private It should_return_a_view_with_a_signin_model = () =>
+    //        {
+    //            _result.ShouldBeAView().And().ShouldHaveModelOfType<MyAccountSignInModel>();
+    //        };
 
-        private static ActionResult _result;
-    }
+    //    private static ActionResult _result;
+    //}
 }

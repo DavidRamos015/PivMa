@@ -5,8 +5,8 @@ using MiniAmazon.Web.Models;
 
 namespace MiniAmazon.Web.Specs
 {
-    public class when_a_guest_wants_to_register : given_an_account_controller_context
-    {
+    //public class when_a_guest_wants_to_register : given_an_account_controller_context
+    //{
         //private Establish context = () =>
         //    {
                 
@@ -24,5 +24,5 @@ namespace MiniAmazon.Web.Specs
       
 
         //private static ActionResult _result;
-    }
+    //}
 }
