@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Mail;
 using System.Net.Mime;
+using MiniAmazon.Data;
 using MiniAmazon.Domain;
 using MiniAmazon.Domain.Entities;
 
@@ -87,13 +88,13 @@ namespace MiniAmazon.Web.Infrastructure
 
                 SendEmail(mailMessage, async);
 
-                SaveRegisterEmailSent(repository, "enviado", mailOperationType, true);
+                SaveRegisterEmailSent(repository, "enviado", emailtoSend, Utility.AdminEmail, mailOperationType, true);
                 return true;
 
             }
             catch (Exception ex)
             {
-                SaveRegisterEmailSent(repository, ex.Message, mailOperationType, false);
+                SaveRegisterEmailSent(repository, ex.Message, emailtoSend, Utility.AdminEmail, mailOperationType, false);
                 return false;
             }
         }
@@ -106,14 +107,14 @@ namespace MiniAmazon.Web.Infrastructure
             return (kind << 62) | (ulong)when.Ticks;
         }
 
-        public static void SaveRegisterEmailSent(IRepository repository, string description, MailOperationType mailOperationId, bool successfully)
+        public static void SaveRegisterEmailSent(IRepository repository, string description, string SentTo, string SentFrom, MailOperationType mailOperationId, bool successfully)
         {
             var item = new EmailsSent
                 {
                     CreateDateTime = DateTime.Now,
                     Description = description,
                     MailOperationId = (int)mailOperationId,
-                    Successfully = successfully
+                    Successfully = successfully,
                 };
 
             repository.Create(item);
@@ -125,6 +126,7 @@ namespace MiniAmazon.Web.Infrastructure
 
             var item = new EmailsConfirmationOperation()
             {
+                Active = true,
                 CreateDateTime = DateTime.Now,
                 CodeToConfirm = codeToConfirm,
                 ControllerToRedirect = controllerToRedirect,

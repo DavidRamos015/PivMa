@@ -4,6 +4,12 @@ namespace MiniAmazon.Domain.Entities
 {
     public class EmailsConfirmationOperation : IEntity
     {
+        public EmailsConfirmationOperation()
+        {
+            Active = true;
+            CreateDateTime = DateTime.Now;
+        }
+
         public virtual long Id { get; set; }
 
         public virtual DateTime CreateDateTime { get; set; }
@@ -17,6 +23,8 @@ namespace MiniAmazon.Domain.Entities
         public virtual long ObjectID { get; set; }
 
         public virtual string CodeToConfirm { get; set; }
+
+        public virtual bool Active { get; set; }
 
     }
 }

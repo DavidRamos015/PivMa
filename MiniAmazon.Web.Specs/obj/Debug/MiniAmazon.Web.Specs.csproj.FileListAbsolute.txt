@@ -48,3 +48,4 @@ C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\obj\Debug\MiniAmazon.W
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\obj\Debug\MiniAmazon.Web.Specs.dll
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\obj\Debug\MiniAmazon.Web.Specs.pdb
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\bin\Debug\Facebook.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\bin\Debug\FluentSecurity.dll

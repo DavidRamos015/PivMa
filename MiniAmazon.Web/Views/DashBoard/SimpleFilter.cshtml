@@ -1,0 +1,56 @@
+﻿@{
+    //ViewBag.Title = "Search";
+    Layout = "~/Views/shared/_pivma.main.dashboard.Header.cshtml";
+}
+
+@using BootstrapSupport
+@model System.Collections.IEnumerable 
+<html>
+<body>
+    <div class="row">
+        <div class="span12">
+            <h1>@ViewBag.Title</h1>
+            <br />
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Producto</th>
+                        <th>Descripción</th>
+                        <th>Categoria</th>
+                        <th>Vendedor</th>
+                        <th>Disponible</th>
+                        <th>Precio Unitario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>                  
+                        <td class="muted center_text"><a href="product.html">
+                            <center>
+                                <img alt="" src="http://placehold.it/75x75" /></a></td>
+                            </center>
+                        <td>Nexus 4</td>
+                        <td>Nexus 4 16 gb  white version with lte</td>
+                        <td>Telefonia</td>                            
+                        <td>Google</td>
+                        <td>10</td>
+                        <td>$ 350.00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</body>
+</html>

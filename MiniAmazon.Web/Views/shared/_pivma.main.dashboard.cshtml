@@ -19,9 +19,16 @@
                     <div class="span1">&nbsp;</div>
                     <div class="span2">
                         <h4>Bienvenido</h4>
-                        @Html.ActionLink("Entrar", "SignIn", "MyAccount") |
-                        @Html.ActionLink("Registrarme", "Create_Record", "MyAccount")
-
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink(User.Identity.Name, "Profile", "MyAccount", User.Identity.Name) <br />
+                            @Html.ActionLink("Cerrar sesión", "LogOut", "MyAccount")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Entrar", "SignIn", "MyAccount")<br />
+                            @Html.ActionLink("Registrarme", "Create_Record", "MyAccount")
+                        }
 
                     </div>
 
@@ -41,9 +48,15 @@
                 <br />
                 <div class="row">
                     <div class="link pull-right">
-                        <a href="index.html">Inicio</a> |                           
-                        <a href="my_account.html">Mi perfil</a> |   
-                        @Html.ActionLink("Administración", "Menu", "Management")
+                        @Html.ActionLink("Inicio", "Index", "DashBoard")
+                        @Html.ActionLink("Perfil", "Profile", "MyAccount")
+                        @if (Request.IsAuthenticated)
+                        {
+                            if (User.IsInRole(MiniAmazon.Data.Utility.AdminRole))
+                            {
+                            @Html.ActionLink("Administración", "Menu", "Management")
+                            }
+                        }
 
                     </div>
                 </div>
@@ -103,60 +116,80 @@
                                     </li>
                                 </ul>
 
-                                @*Barra y boton Buscar*@
-                                <ul class="nav pull-right">
-                                    <li class="divider-vertical"></li>
-                                    <form class="navbar-search" method="get" action="">
-                                        <input class="search-query  span2" placeholder="..." type="text" />
-                                        <button class="btn btn-primary btn-" type="submit">Buscar</button>
-                                    </form>
-                                </ul>
+
+                                @*    @{ Html.BeginForm("Search", "Search", FormMethod.Post);
+                                    <input class="input-xxlarge" type="text" placeholder="Buscar">                                        
+                                    <button class="btn btn-large btn-primary" type="submit">Buscar</button>                                        
+                                }*@
+
+
+
+                                <div class="accordion" id="accordion2">
+                                    <div class="accordion-group">
+                                        <div id="collapseOne" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+                                                <form class="form-search">
+                                                    <div class="input-append">
+                                                        <input type="text" class="input-xxlarge">
+                                                        @*<button type="submit" onclick="location.href='@Url.Action("Search", "Search")'" class="btn">Buscar</button>*@
+                                                        @*<button type="submit" value="Create" onclick="location.href='@Url.Action("Search", "Search")'" />*@
+                                                        <input type="button" value="Create" onclick="location.href='@Url.Action("SimpleFilter", "DashBoard")    '" class="btn">Buscar</button> />
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            @RenderBody()
+
+            @*Menu del pie de pagina*@
+            <footer>
+                <hr>
+                <div class="row well no_margin_left">
+
+                    <div class="span3">
+                        <h4>Information</h4>
+                        <ul>
+                            <li><a href="about.html">Acerca de nostros</a></li>
+                            <li><a href="contact.html">Contactenos</a></li>
+                            <li><a href="about.html">Información de entrega </a></li>
+                            <li><a href="about.html">Politica de privacidad</a></li>
+                            <li><a href="about.html">Terminos y condiciones</a></li>
+                        </ul>
+                    </div>
+                    <div class="span3">
+                        <h4>Ayudanos</h4>
+                        <ul>
+                            <li><a href="contact.html">Denuncias</a></li>
+                            <li><a href="about.html">Sugerencia</a></li>
+                            <li><a href="about.html">Publicidad</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="span3">
+
+                        @if (Request.IsAuthenticated)
+                        {
+                       
+                            <h4>Mi Cuenta</h4>
+@*<ul>*@
+                            <li><a>@Html.ActionLink("Perfil", "Profile", "MyAccount")</a></li>
+                            <li><a>@Html.ActionLink("Articulos", "Index_Record", "Product")</a></li>
+                            <li><a>href="about.html">Ventas</a></li>
+                            <li><a>href="about.html">Compras</a></li>
+                            <li><a>href="about.html">Transacciones pendientes</a></li>
+@*</ul>*@
+                        }
+                    </div>
+                </div>
+            </footer>
         </div>
-
-        @RenderBody()
-
-        @*Menu del pie de pagina*@
-        <footer>
-            <hr>
-            <div class="row well no_margin_left">
-
-                <div class="span3">
-                    <h4>Information</h4>
-                    <ul>
-                        <li><a href="about.html">Acerca de nostros</a></li>
-                        <li><a href="contact.html">Contactenos</a></li>
-                        <li><a href="about.html">Información de entrega </a></li>
-                        <li><a href="about.html">Politica de privacidad</a></li>
-                        <li><a href="about.html">Terminos y condiciones</a></li>
-                    </ul>
-                </div>
-                <div class="span3">
-                    <h4>Ayudanos</h4>
-                    <ul>
-                        <li><a href="contact.html">Denuncias</a></li>
-                        <li><a href="about.html">Sugerencia</a></li>
-                        <li><a href="about.html">Publicidad</a></li>
-                    </ul>
-                </div>
-
-                <div class="span3">
-                    <h4>Mi Cuenta</h4>
-                    <ul>
-                        <li><a href="my_account.html">Perfil</a></li>
-                        <li><a @Html.ActionLink("Articulos", "Index_Record", "Product")</a></li>
-                        <li><a href="about.html">Ventas</a></li>
-                        <li><a href="about.html">Compras</a></li>
-                        <li><a href="about.html">Transacciones pendientes</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-    </div>
-
 </body>
 </html>

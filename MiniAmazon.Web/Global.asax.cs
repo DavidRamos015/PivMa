@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Configuration;
 using System.Reflection;
+using System.Security.Principal;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
 using AcklenAvenue.Data.NHibernate;
 using AutoMapper;
-using AutoMapper.Mappers;
 using BootstrapMvcSample;
 using BootstrapSupport;
 using FluentNHibernate.Cfg.Db;
@@ -21,19 +22,19 @@ using Ninject.Web.Common;
 
 namespace MiniAmazon.Web
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
+    // Note: For instructions on enabling IIS6 or IIS7 classic mode,
     // visit http://go.microsoft.com/?LinkId=9394801
     public class MvcApplication : NinjectHttpApplication
     {
         /*protected void Application_Start()
-        {
-            AreaRegistration.RegisterAllAreas();
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
-            BootstrapMvcSample.ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
-        }*/
+{
+AreaRegistration.RegisterAllAreas();
+WebApiConfig.Register(GlobalConfiguration.Configuration);
+FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+RouteConfig.RegisterRoutes(RouteTable.Routes);
+BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
+BootstrapMvcSample.ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
+}*/
 
         public static ISessionFactory SessionFactory = CreateSessionFactory();
 
@@ -56,7 +57,8 @@ namespace MiniAmazon.Web
         public static ISessionFactory CreateSessionFactory()
         {
             MsSqlConfiguration databaseConfiguration = MsSqlConfiguration.MsSql2008.ShowSql().
-                ConnectionString(x => x.FromConnectionStringWithKey("MiniAmazon"));
+                ConnectionString(x => x.FromConnectionStringWithKey("MiniAmazon.Local"));
+                //ConnectionString(x => x.FromConnectionStringWithKey("MiniAmazon.Remote"));
             ISessionFactory sessionFactory = new SessionFactoryBuilder(new MappingScheme(), databaseConfiguration)
                 .Build();
 
@@ -67,7 +69,9 @@ namespace MiniAmazon.Web
         {
             base.OnApplicationStarted();
             AreaRegistration.RegisterAllAreas();
+            
             WebApiConfig.Register(GlobalConfiguration.Configuration);
+            FluentSecurityConfig.Configure();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BootstrapBundleConfig.RegisterBundles(BundleTable.Bundles);
@@ -83,10 +87,32 @@ namespace MiniAmazon.Web
             kernel.Bind<IRepository>().To<Repository>();
             kernel.Bind<ISession>().ToMethod(x => SessionFactory.GetCurrentSession());
             kernel.Bind<IMappingEngine>().ToConstant(Mapper.Engine);
-            
-            
+
 
             return kernel;
+        }
+
+        protected void Application_AuthenticateRequest(Object sender, EventArgs e)
+        {
+            if (Context.User != null)
+            {
+                string cookieName = FormsAuthentication.FormsCookieName;
+
+                HttpCookie authCookie = Context.Request.Cookies[cookieName];
+                if (authCookie == null)
+
+                    return;
+
+
+                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+
+                string[] roles = authTicket.UserData.Split(new[] { '|' });
+
+
+                var fi = (FormsIdentity)(Context.User.Identity);
+
+                Context.User = new GenericPrincipal(fi, roles);
+            }
         }
     }
 }

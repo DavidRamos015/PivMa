@@ -17,7 +17,8 @@ namespace MiniAmazon.DatabaseDeployer
         {
 
             MsSqlConfiguration databaseConfiguration = MsSqlConfiguration.MsSql2008.ShowSql().
-                ConnectionString(x => x.FromConnectionStringWithKey("MiniAmazon"));
+                //        ConnectionString(x => x.FromConnectionStringWithKey("MiniAmazon.Remote"));
+                          ConnectionString(x => x.FromConnectionStringWithKey("MiniAmazon.Local"));
 
             DomainDrivenDatabaseDeployer.DatabaseDeployer dd = null;
             ISessionFactory sessionFactory = new SessionFactoryBuilder(new MappingScheme(), databaseConfiguration)
@@ -35,7 +36,9 @@ namespace MiniAmazon.DatabaseDeployer
             {
                 dd.Seed(new List<IDataSeeder>
                             {
+                                new RoleSeeder (session ),
                                 new AccountSeeder(session),
+                                new Account_RoleSeeder(session),
                                 new SaleSeeder(session),
                                 new CategoriesSeeder(session),
                                 new ProductsSeeder(session)

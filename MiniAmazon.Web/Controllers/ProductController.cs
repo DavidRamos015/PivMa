@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using MiniAmazon.Data;
 using MiniAmazon.Domain;
 using MiniAmazon.Domain.Entities;
 using MiniAmazon.Web.Infrastructure;
@@ -38,6 +39,12 @@ namespace MiniAmazon.Web.Controllers
 
         public ActionResult Create_Record()
         {
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    Attention(Utility.MsjNeedToLogin);
+            //    return RedirectToAction("Index", "DashBoard");
+            //}
+
             ViewBag.Title = "Crear nuevo producto";
             var item = new ProductInputModel { CreateDateTime = DateTime.Now, PostOnFacebook = true };
             return View(item);
@@ -49,7 +56,7 @@ namespace MiniAmazon.Web.Controllers
             ViewBag.Title = "Crear nuevo producto";
             var account = _mappingEngine.Map<ProductInputModel, Product>(model);
             account.Active = true;
-            account.AccountId = 1;
+            account.AccountId = ManagementController.GetAccountID(User, _repository);
             _repository.Create(account);
 
             return RedirectToAction("Index_Record");

@@ -62,11 +62,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Seeder\AccountCustomerSeeder.cs" />
     <Compile Include="Seeder\AccountSeeder.cs" />
+    <Compile Include="Seeder\Account_RoleSeeder.cs" />
     <Compile Include="Seeder\CategoriesSeeder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seeder\ProductsSeeder.cs" />
+    <Compile Include="Seeder\RoleSeeder.cs" />
     <Compile Include="Seeder\SaleSeeder.cs" />
     <Compile Include="Seeder\Seeder.cs" />
   </ItemGroup>

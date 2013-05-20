@@ -23,12 +23,22 @@ namespace MiniAmazon.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("SignIn", "SignIn", new { controller = "MyAccount", action = "SignIn" });
+
+
+            routes.MapRoute("Error", "Error", new { controller = "Errors", action = "Error404" });
+
             routes.MapHttpRoute(
                  name: "FacebookApi",
                  routeTemplate: "{controller}/{id}/api",
                  defaults: new { id = RouteParameter.Optional }
              );
 
+           // routes.MapRoute(
+           //    "Usuarios_default",
+           //    "Usuarios/{controller}/{action}/{id}",
+           //    new { action = "Index", id = UrlParameter.Optional }
+           //);
 
         //    routes.MapHttpRoute(
         //    name: "DefaultApi",

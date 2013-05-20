@@ -305,3 +305,4 @@ C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\System.Web.WebPages.Razo
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.csprojResolveAssemblyReference.cache
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.dll
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.pdb
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\FluentSecurity.dll

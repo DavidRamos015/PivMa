@@ -19,7 +19,10 @@ namespace MiniAmazon.Domain.Entities
 
         public virtual DateTime CreateDateTime { get; set; }
 
-        public virtual string Picture { get; set; }
+        public virtual string Picture1 { get; set; }
+        public virtual string Picture2 { get; set; }
+        public virtual string Picture3 { get; set; }
+        public virtual string Picture4 { get; set; }
 
         public virtual string YoutubeLink { get; set; }
 
@@ -50,7 +53,10 @@ namespace MiniAmazon.Domain.Entities
                 Inventory = item.Inventory,
                 Name = item.Name,
                 PendingChange = true,
-                Picture = item.Picture,
+                Picture1 = item.Picture1,
+                Picture2 = item.Picture2,
+                Picture3 = item.Picture3,
+                Picture4 = item.Picture4,
                 PostOnFacebook = item.PostOnFacebook,
                 Price = item.Price,
                 YoutubeLink = item.YoutubeLink,

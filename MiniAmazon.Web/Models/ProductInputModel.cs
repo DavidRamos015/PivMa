@@ -37,8 +37,20 @@ namespace MiniAmazon.Web.Models
         public virtual DateTime CreateDateTime { get; set; }
 
 
-        [Display(Name = "Imagen")]
-        public virtual string Picture { get; set; }
+        [Display(Name = "Imagen 1")]
+        public virtual string Picture1 { get; set; }
+
+
+        [Display(Name = "Imagen 2")]
+        public virtual string Picture2 { get; set; }
+
+
+        [Display(Name = "Imagen 3")]
+        public virtual string Picture3 { get; set; }
+
+
+        [Display(Name = "Imagen 4")]
+        public virtual string Picture4 { get; set; }
 
         [Display(Name = "Enlace video")]
         public virtual string YoutubeLink { get; set; }

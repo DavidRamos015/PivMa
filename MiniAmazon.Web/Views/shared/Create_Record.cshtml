@@ -1,5 +1,5 @@
 @{
-   // ViewBag.Title = "Nuevo registro";
+    //ViewBag.Title = "Nuevo registro";
     Layout = "~/Views/shared/_pivma.main.dashboard.Header.cshtml";
     
 }
@@ -12,25 +12,26 @@
 {
     @Html.ValidationSummary(true)
     <fieldset class="form-horizontal">
-        <legend> <small>@ViewBag.Title</small></legend>
+        <legend> <center><b> <small>@ViewBag.Title</small> </b> </center>  </legend>
         @foreach (var property in Model.VisibleProperties())
         {
             using(Html.ControlGroupFor(property.Name)){
                 @Html.Label(property.Name.ToSeparatedWords(), new { @class = "control-label" })
                  <div class="controls">
-                     @Html.Editor(property.Name, new { @class = "input-xlarge" })
+                     @Html.Editor(property.Name, new { @class = "input-xxlarge" ,placeholder="Código de confirmación"})
                      @Html.ValidationMessage(property.Name, null, new { @class = "help-inline" })
                  </div>
             }
         }
 		<div class="form-actions">
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            @Html.ActionLink("Cancelar", "Index_Record", null, new { @class = "btn " })
+            <button type="submit" class="btn btn-primary">Confirmar</button>
+            @*<button type="submit" class="btn btn-">Cancelar</button>*@
+            @Html.ActionLink("Cancelar","Index", "DashBoard")
           </div>
     </fieldset>
 }
 <div>
-    @Html.ActionLink("Atras", "Index_Record")
+    @Html.ActionLink("Inicio","Index", "DashBoard")
 </div>
 
 

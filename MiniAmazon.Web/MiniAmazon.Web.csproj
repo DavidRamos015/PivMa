@@ -68,6 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="FluentSecurity">
+      <HintPath>..\packages\FluentSecurity.1.4.0\lib\FluentSecurity.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
@@ -172,18 +175,18 @@
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
     <Compile Include="App_Start\ExampleLayoutsRouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
     <Compile Include="BootstrapSupport\HtmlHelpers\GlyphIcons.cs" />
     <Compile Include="BootstrapSupport\HtmlHelpers\Paging.cs" />
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\FbAccountController.cs" />
     <Compile Include="Controllers\MyAccountController.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ConfirmationsController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
-    <Compile Include="Controllers\ExampleLayoutsController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\FbWallMessageController.cs" />
@@ -191,24 +194,28 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AutoMapperConfiguration.cs" />
+    <Compile Include="Infrastructure\DenyAnonymousAccessPolicyViolationHandler.cs" />
     <Compile Include="Infrastructure\EmailUtility.cs" />
+    <Compile Include="Infrastructure\FluentSecurityConfig.cs" />
     <Compile Include="Infrastructure\Helper.cs" />
     <Compile Include="Infrastructure\Picture.cs" />
-    <Compile Include="Infrastructure\Utility.cs" />
+    <Compile Include="Infrastructure\RequireRolePolicyViolationHandler.cs" />
     <Compile Include="Models\FacebookLocation.cs" />
     <Compile Include="Models\FacebookUserModel.cs" />
     <Compile Include="Models\MethodResult.cs" />
     <Compile Include="Models\MyAccountInputModel.cs" />
     <Compile Include="Models\MyAccountLockedInputModel.cs" />
+    <Compile Include="Models\MyAccountProfileModel.cs" />
     <Compile Include="Models\MyAccountRecoveryPasswordInputModel.cs" />
     <Compile Include="Models\MyAccountSignInModel.cs" />
     <Compile Include="Models\CategoriesInputModel.cs" />
     <Compile Include="Models\ConfirmationsInputModel.cs" />
     <Compile Include="Models\FacebookLoginModel.cs" />
-    <Compile Include="Models\HomeInputModel.cs" />
     <Compile Include="Models\ProductInputModel.cs" />
     <Compile Include="Models\ProductUpdateApprovalInputModel.cs" />
     <Compile Include="Models\ProductUpdateInputModel.cs" />
+    <Compile Include="Models\SearchFilterInputModel.cs" />
+    <Compile Include="Models\SearchInputModel.cs" />
     <Compile Include="Models\WallMessageModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />
@@ -239,6 +246,7 @@
     <Content Include="local.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Areas\Admin\Views\Web.config" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
@@ -304,9 +312,14 @@
     <Content Include="Views\FbWallMessage\CreatedSuccessfully.cshtml" />
     <Content Include="Views\FbWallMessage\WallMessageError.cshtml" />
     <Content Include="Views\shared\_Navigation.cshtml" />
+    <Content Include="Views\shared\Error404.cshtml" />
+    <Content Include="Views\DashBoard\SimpleFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

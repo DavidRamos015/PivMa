@@ -15,13 +15,18 @@ namespace MiniAmazon.DatabaseDeployer.Seeder
         {
             var account = new Account
                 {
-                    Name = "David Ramos",
-                    Email = "david.ramos@grupoleitz.com",
+                    Name = "Admin",
+                    Email = "admin@pivma.com",
                     Password = "0123456789"
                 };
             account.PendingConfirmation = false;
             account.Active = true;
             account.Locked = false;
+
+            //var role = new Role();
+            //role.Name = Data.Utility.AdminRole;
+
+            //account.AddRole(role);
             Session.Save(account);
         }
     }

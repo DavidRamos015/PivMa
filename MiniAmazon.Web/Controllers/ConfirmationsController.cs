@@ -51,11 +51,18 @@ namespace MiniAmazon.Web.Controllers
                 return View(confirmationsInputModel);
             }
 
+            if (!operation.Active)
+            {
+                Error("El codigo de confirmación ha explirado.");
+                return View(confirmationsInputModel);
+            }
+
             var operationType = (MailOperationType)operation.MailOperationTypeId;
 
 
             switch (operationType)
             {
+
                 case MailOperationType.PasswordChange:
                     {
                         var account = _repository.First<Account>(x => x.Id == operation.ObjectID);
@@ -65,12 +72,16 @@ namespace MiniAmazon.Web.Controllers
                             return RedirectToAction("Index", "DashBoard");
                         }
 
+                        
                         account.PendingConfirmation = false;
+                        operation.Active = false;
+                        _repository.Update(operation);
                         _repository.Update(account);
                         EmailUtility.SendEmail(_repository, account.Email, account.Name,
                                                "Su contraseña ha sido restablecida el " +
                                                DateTime.Now.ToLongDateString(), "Recuperación de contraseña",
                                                MailOperationType.PasswordChange, true);
+
 
                         return RedirectToAction("Index", "DashBoard");
 
@@ -88,13 +99,15 @@ namespace MiniAmazon.Web.Controllers
                         accountToConfirm.PendingConfirmation = false;
                         accountToConfirm.Active = true;
                         accountToConfirm.Locked = false;
+                        operation.Active = false;
+                        _repository.Update(operation);
                         _repository.Update(accountToConfirm);
                         EmailUtility.SendEmail(_repository, accountToConfirm.Email, accountToConfirm.Name,
                                                "Su cuenta ha sido activada exitosamente " +
                                                DateTime.Now.ToLongDateString(), "Recuperación de contraseña",
                                                MailOperationType.RegisterAccount, true);
 
-                        return RedirectToAction("Index", "DashBoard");
+                        return RedirectToAction("SignIn", "MyAccount");
                     }
                 default:
                     Information("Proceso para: " + operationType.ToString() + " aún no ha sido implementada.");

@@ -16,7 +16,7 @@ namespace MiniAmazon.DatabaseDeployer.Seeder
 
         public override void Seed()
         {
-            var account = Session.Query<Account>().First(x => x.Email == "david.ramos@grupoleitz.com");
+            var account = Session.Query<Account>().First(x => x.Email == "admin@pivma.com");
             var sale = Builder<Sale>.CreateNew().Build();
             Session.Save(sale);
             account.AddSale(sale);

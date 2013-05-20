@@ -19,8 +19,16 @@
                     <div class="span1">&nbsp;</div>
                     <div class="span2">
                         <h4>Bienvenido</h4>
-                        @Html.ActionLink("Entrar", "SignIn", "MyAccount") |
-                        @Html.ActionLink("Registrarme", "Create_Record", "MyAccount")
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink(User.Identity.Name, "Profile", "MyAccount", User.Identity.Name) <br />
+                            @Html.ActionLink("Cerrar sesión", "LogOut", "MyAccount")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Entrar", "SignIn", "MyAccount")<br />
+                            @Html.ActionLink("Registrarme", "Create_Record", "MyAccount")
+                        }
 
 
                     </div>
@@ -41,10 +49,16 @@
                 <br />
                 <div class="row">
                     <div class="link pull-right">
-                        <a href="index.html">Inicio</a> |                           
-                        <a href="my_account.html">Mi perfil</a> |   
-                        @Html.ActionLink("Administración", "Menu", "Management")
+                        @Html.ActionLink("Inicio", "Index", "DashBoard")
+                        @Html.ActionLink("Perfil", "Profile", "MyAccount")
 
+                        @if (Request.IsAuthenticated)
+                        {
+                            if (User.IsInRole(MiniAmazon.Data.Utility.AdminRole))
+                            {
+                            @Html.ActionLink("Administración", "Menu", "Management")
+                            }
+                        }
                     </div>
                 </div>
             </div>
@@ -104,13 +118,39 @@
                                 </ul>
 
                                 @*Barra y boton Buscar*@
-                                <ul class="nav pull-right">
+                                @* <ul class="nav pull-right">
                                     <li class="divider-vertical"></li>
                                     <form class="navbar-search" method="get" action="">
                                         <input class="search-query  span2" placeholder="..." type="text" />
                                         <button class="btn btn-primary btn-" type="submit">Buscar</button>
                                     </form>
-                                </ul>
+                                </ul>*@
+
+                                @*    @{ Html.BeginForm("Search", "Search", FormMethod.Post);
+                                    <input class="input-xxlarge" type="text" placeholder="Buscar">                                        
+                                    <button class="btn btn-large btn-primary" type="submit">Buscar</button>                                        
+                                }*@
+
+
+
+                                <div class="accordion" id="accordion2">
+                                    <div class="accordion-group">
+                                        <div id="collapseOne" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+                                                <form class="form-search">
+                                                    <div class="input-append">
+                                                        <input type="text" class="input-xxlarge">
+                                                        @*<button type="submit" onclick="location.href='@Url.Action("Search", "Search")'" class="btn">Buscar</button>*@
+                                                        @*<button type="submit" value="Create" onclick="location.href='@Url.Action("Search", "Search")'" />*@
+                                                        <input type="button" value="Create" onclick="location.href='@Url.Action("SimpleFilter", "DashBoard")    '" class="btn">Buscar</button> />
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -118,7 +158,7 @@
             </div>
         </div>
 
-        <div class="row">
+        @*         <div class="row">
             <div class="span12">
                 <div class="page-header">
                     <h1>@ViewBag.Title <small>
@@ -126,11 +166,10 @@
                     </small></h1>
                 </div>
             </div>
-        </div>
-
+        </div>*@
 
         @*Filtro*@
- @*       <div class="accordion" id="accordion2">
+        @* <div class="accordion" id="accordion2">
             <div class="accordion-group">
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Filtrar</a>
@@ -153,7 +192,7 @@
         <div class="accordion" id="accordion2">
             <div class="accordion-group">
                 <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Registros </a>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"></a>
                 </div>
                 <div id="collapseOne" class="accordion-body collapse in">
                     <div class="accordion-inner">
@@ -162,7 +201,8 @@
                 </div>
             </div>
 
-        </div></div>
+        </div>
+    </div>
 </body>
 </html>
 

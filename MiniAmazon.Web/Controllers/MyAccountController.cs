@@ -5,6 +5,12 @@ using MiniAmazon.Domain;
 using MiniAmazon.Domain.Entities;
 using MiniAmazon.Web.Infrastructure;
 using MiniAmazon.Web.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Principal;
+using System.Web.Security;
+using System;
+using MiniAmazon.Data;
 
 namespace MiniAmazon.Web.Controllers
 {
@@ -58,15 +64,24 @@ namespace MiniAmazon.Web.Controllers
                                    MailOperationType.PasswordChange,
                                    true);
 
-            Information("Un mensaje con información para recuperar cambiar la clave ha sido enviado a su correo.");
+            Information("Un mensaje con la información necesaria para recuperar cambiar la clave ha sido enviado a su correo.");
 
             return RedirectToAction("Index", "DashBoard");
         }
 
 
-        public ActionResult SignIn()
+        //public ActionResult SignIn()
+        //{
+        //    ViewBag.Title = "Iniciar sesion";
+        //    return View(new MyAccountSignInModel());
+        //}
+
+        public ActionResult SignIn(string error = null)
         {
-            ViewBag.Title = "Iniciar sesion";
+            if (!String.IsNullOrEmpty(error))
+            {
+                Error(error);
+            }
             return View(new MyAccountSignInModel());
         }
 
@@ -86,6 +101,23 @@ namespace MiniAmazon.Web.Controllers
                     return View(accountSignInModel);
                 }
 
+
+                List<string> roles = new List<string>();
+                var roles_user = _repository.Query<Account_Role>(x => x.Account_Id == account.Id);//.Select(x => x.Role_Id).ToList();
+                var roles_db = _repository.Query<Role>(x => x.Id == x.Id);
+
+                foreach (var ru in roles_user)
+                {
+                    foreach (var r in roles_db)
+                    {
+                        if (ru.Role_Id == r.Id)
+                            roles.Add(r.Name);
+                    }
+                }
+
+                FormsAuthentication.SetAuthCookie(accountSignInModel.Email, accountSignInModel.RememberMe);
+                //SetAuthenticationCookie(accountSignInModel.Email, new List<string> { "Admin", "Patito" });
+                SetAuthenticationCookie(accountSignInModel.Email, roles);
                 return RedirectToAction("Index", "DashBoard");
             }
 
@@ -93,10 +125,17 @@ namespace MiniAmazon.Web.Controllers
             return View(accountSignInModel);
         }
 
-
+        [Authorize]
         public ActionResult Index()
         {
             return RedirectToAction("Index", "DashBoard");
+        }
+
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("SignIn");
         }
 
         public ActionResult Create_Record()
@@ -131,7 +170,24 @@ namespace MiniAmazon.Web.Controllers
                 return View(accountInputModel);
             }
 
+
+
             _repository.Create(account);
+
+            var role = new Account_Role();
+            role.Account_Id = -1;
+
+            role.Role_Id = _repository.Query<Role>(x => x.Name == Utility.UserRole).First<Role>().Id;
+            var user = _repository.Query<Account>(x => x.Email == account.Email && x.Active == true);
+
+            if (user != null)
+            {
+                role.Account_Id = user.First<Account>().Id;
+            }
+
+
+            _repository.Create(role);
+
 
             var codeToConfirm = EmailUtility.SaveRegisterEmailConfirmationOperation(_repository, "DashBoard", "Index",
                                                                 MailOperationType.RegisterAccount, account.Id);
@@ -167,6 +223,62 @@ namespace MiniAmazon.Web.Controllers
 
             return Json(false, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Profile(string  email)
+        {
+            ViewBag.Title = "Tu Perfil";
+            var item = _repository.First<Account>(x => x.Email ==email  && x.Active);
+
+            if (item == null)
+            {
+                Error("El perfil no pudo ser cargado.");
+                return RedirectToAction("Index", "DashBoard");
+            }
+            var accountLockedInputModel = _mappingEngine.Map<Account, MyAccountLockedInputModel>(item);
+
+
+            return View(accountLockedInputModel);
+        }
+
+        [HttpPost]
+        public ActionResult Profile(MyAccountLockedInputModel InputModel)
+        {
+            ViewBag.Title = "Tu Perfil";
+            if (ModelState.IsValid)
+            {
+                var account = _repository.First<Account>(x => x.Id == InputModel.Id);
+
+                if (account == null)
+                {
+                    Error("El perfil no pudo ser cargado.");
+                    return RedirectToAction("Index", "DashBoard");
+                }
+
+                var item = _mappingEngine.Map<MyAccountLockedInputModel, Account>(InputModel);
+                item.Active = account.Active;
+                item.Locked = account.Locked;
+                item.PendingConfirmation = account.PendingConfirmation;
+
+                if (account.Password != item.Password)
+                {
+                    EmailUtility.SendEmail(_repository, item.Email,
+                                                        item.Name,
+                                                        InputModel.Comments,
+                                                        "Haz cambiado la contraseña de tu cuenta el" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString(),
+                                                        MailOperationType.PasswordChangedWhenUpdatedProfile, true);
+                }
+
+                _repository.Update(item);
+
+                Information("Tu perfil ha sido actualizado.");
+
+
+                return RedirectToAction("Index", "DashBoard");
+            }
+
+            return View(InputModel);
+        }
+
 
         public ActionResult Edit(int id)
         {

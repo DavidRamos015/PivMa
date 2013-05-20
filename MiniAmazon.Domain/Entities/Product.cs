@@ -18,7 +18,10 @@ namespace MiniAmazon.Domain.Entities
 
         public virtual DateTime CreateDateTime { get; set; }
 
-        public virtual string Picture { get; set; }
+        public virtual string Picture1 { get; set; }
+        public virtual string Picture2 { get; set; }
+        public virtual string Picture3 { get; set; }
+        public virtual string Picture4 { get; set; }
 
         public virtual string YoutubeLink { get; set; }
 

@@ -31,6 +31,7 @@ namespace MiniAmazon.Web.Controllers
             return View();
         }
 
+
         #region Validations
 
         public bool IsCategoryInUse(int categoryId)
@@ -72,8 +73,29 @@ namespace MiniAmazon.Web.Controllers
             return Json(ExistingCategoryName(name, -1), JsonRequestBehavior.AllowGet);
         }
 
+        public static bool UserIsLogin(System.Security.Principal.IPrincipal controller)
+        {
+            if (controller.Identity.IsAuthenticated)
+                return true;
 
+            return false;
+        }
 
+        public static long GetAccountID(System.Security.Principal.IPrincipal user, IRepository repository)
+        {
+            if (user == null)
+                return -1;
+
+            if (user.Identity.IsAuthenticated)
+                return -1;
+
+            var account = repository.Query<Account>(x => x.Email == user.Identity.Name && x.Active);
+
+            if (account != null)
+                return account.First<Account>().Id;
+
+            return -1;
+        }
 
         public bool ExistingCategoryID(int categoryId)
         {
