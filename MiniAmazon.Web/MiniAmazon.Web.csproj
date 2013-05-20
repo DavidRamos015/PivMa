@@ -216,6 +216,7 @@
     <Compile Include="Models\ProductUpdateInputModel.cs" />
     <Compile Include="Models\SearchFilterInputModel.cs" />
     <Compile Include="Models\SearchInputModel.cs" />
+    <Compile Include="Models\SearchSimpleInputModel.cs" />
     <Compile Include="Models\WallMessageModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />

@@ -13,7 +13,7 @@ namespace MiniAmazon.Web.Controllers
     public class DashBoardController : Controller
     {
 
-          private readonly IRepository _repository;
+        private readonly IRepository _repository;
         private readonly IMappingEngine _mappingEngine;
 
         public DashBoardController(IRepository repository, IMappingEngine mappingEngine)
@@ -36,7 +36,7 @@ namespace MiniAmazon.Web.Controllers
 
             var datosAView = _repository.Query<Product>(x => x.Active == true && (x.Description.Contains(filter)));
 
-            List<SearchInputModel> result = new List<SearchInputModel>();
+            List<SearchSimpleInputModel> result = new List<SearchSimpleInputModel>();
 
             foreach (var p in datosAView)
             {
@@ -51,11 +51,13 @@ namespace MiniAmazon.Web.Controllers
                 if (vend != null)
                     vendor = cat.Name;
 
-                var r = new SearchInputModel(p.Name, category, vendor, p.Description, p.Price.ToString(), p.Picture1, p.Picture2, p.Picture3, p.Picture4, p.YoutubeLink, p.Inventory.ToString(), p.AccountId.ToString());
+                var r = new SearchSimpleInputModel(p.Id, p.Name, category, vendor, p.Description, p.Price.ToString(), p.Picture1,p.Inventory.ToString());
                 result.Add(r);
             }
 
-            return View(result);
+            var query = result.AsQueryable<SearchSimpleInputModel>();
+
+            return View(query);
         }
 
 

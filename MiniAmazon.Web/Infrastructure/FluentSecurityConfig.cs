@@ -34,8 +34,9 @@ namespace MiniAmazon.Web.Infrastructure
                 configuration.For<MyAccountController>(x => x.PasswordRecovery()).Ignore();
 
 
+                configuration.For<ManagementController>().Ignore();
+                configuration.For<ManagementController>(x => x.Menu()).RequireRole(new object[] { Utility.AdminRole });
 
-                configuration.For<ManagementController>().RequireRole(new object[] { Utility.AdminRole });
                 configuration.For<CategoriesController>().RequireRole(new object[] { Utility.AdminRole });
 
                 configuration.For<ProductController>(x => x.GetPendingApprovalProductList()).RequireRole(new object[] { Utility.AdminRole });

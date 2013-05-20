@@ -2,42 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using System.ComponentModel.DataAnnotations;
 namespace MiniAmazon.Web.Models
 {
-    public class SearchInputModel
+    public class SearchSimpleInputModel
     {
         public virtual long Id { get; set; }
 
-        public virtual string ProductName { get; set; }
-        public virtual string CategoryName { get; set; }
-        public virtual string VendorName { get; set; }
+        [Display(Name="Imagen")]
+        public virtual string Picture1 { get; set; }
 
+        [Display(Name = "Titulo")]
+        public virtual string ProductName { get; set; }
+
+        [Display(Name = "Descripción")]
         public virtual string Description { get; set; }
 
+        [Display(Name = "Categoria")]
+        public virtual string CategoryName { get; set; }
+
+        [Display(Name = "Vendedor")]
+        public virtual string VendorName { get; set; }
+
+
+        [Display(Name = "Precio")]
         public virtual string Price { get; set; }
 
-        public virtual string Picture1 { get; set; }
-        public virtual string Picture2 { get; set; }
-        public virtual string Picture3 { get; set; }
-        public virtual string Picture4 { get; set; }
-        public virtual string YoutubeLink { get; set; }
+        [Display(Name = "Disponibles")]
         public virtual string Inventory { get; set; }
 
-        public virtual string AccountID { get; set; }
-
-        public SearchInputModel(long _id, string _ProductName,
+        public SearchSimpleInputModel(long _id, string _ProductName,
                                 string _CategoryName,
                                 string _VendorName,
                                 string _Description,
                                 string _Price,
                                 string _Picture1,
-                                string _Picture2,
-                                string _Picture3,
-                                string _Picture4,
-                                string _YoutubeLink,
-                                string _Inventory,
-                                string _AccountID
+                                string _Inventory
                                 )
         {
             Id = _id;
@@ -50,13 +50,9 @@ namespace MiniAmazon.Web.Models
             Price = _Price;
 
             Picture1 = _Picture1;
-            Picture2 = _Picture1;
-            Picture3 = _Picture1;
-            Picture4 = _Picture1;
-            YoutubeLink = _YoutubeLink;
-            Inventory = _Inventory;
-            AccountID = _AccountID;
-        }
 
+            Inventory = _Inventory;
+
+        }
     }
 }

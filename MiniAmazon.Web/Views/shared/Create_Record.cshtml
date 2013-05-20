@@ -1,7 +1,7 @@
 @{
     //ViewBag.Title = "Nuevo registro";
+    //Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
     Layout = "~/Views/shared/_pivma.main.dashboard.Header.cshtml";
-    
 }
 
 
@@ -15,28 +15,24 @@
         <legend> <center><b> <small>@ViewBag.Title</small> </b> </center>  </legend>
         @foreach (var property in Model.VisibleProperties())
         {
-            using(Html.ControlGroupFor(property.Name)){
+            using (Html.ControlGroupFor(property.Name))
+            {
                 @Html.Label(property.Name.ToSeparatedWords(), new { @class = "control-label" })
                  <div class="controls">
-                     @Html.Editor(property.Name, new { @class = "input-xxlarge" ,placeholder="Código de confirmación"})
+                     @Html.Editor(property.Name, new { @class = "input-xlarge" })
                      @Html.ValidationMessage(property.Name, null, new { @class = "help-inline" })
                  </div>
             }
         }
 		<div class="form-actions">
-            <button type="submit" class="btn btn-primary">Confirmar</button>
-            @*<button type="submit" class="btn btn-">Cancelar</button>*@
-            @Html.ActionLink("Cancelar","Index", "DashBoard")
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            @Html.ActionLink("Cancelar", "Index_Record", null, new { @class = "btn " })
           </div>
     </fieldset>
 }
 <div>
-    @Html.ActionLink("Inicio","Index", "DashBoard")
+    @Html.ActionLink("Atras", "Index_Record")
 </div>
-
-
-
-
 
 
 @*@section Scripts {

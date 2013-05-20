@@ -46,7 +46,7 @@
                         @{
                             @Html.TryPartial("_actions", model)                            
                             var routevalues = model.GetIdValue();  
-
+                            
                             <li>@Html.ActionLink("Editar", "Edit",routevalues)</li>
 
                             <li>@Html.ActionLink("Detalles", "Details",routevalues)</li>
