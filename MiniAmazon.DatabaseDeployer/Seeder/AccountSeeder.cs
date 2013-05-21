@@ -17,7 +17,10 @@ namespace MiniAmazon.DatabaseDeployer.Seeder
                 {
                     Name = "Admin",
                     Email = "admin@pivma.com",
-                    Password = "0123456789"
+                    Password = "0123456789",
+                    Age=24,
+                    CountryId=1,
+                    Genre ="M",
                 };
             account.PendingConfirmation = false;
             account.Active = true;

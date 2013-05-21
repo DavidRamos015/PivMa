@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using MiniAmazon.Domain;
 using MiniAmazon.Domain.Entities;
+using MiniAmazon.Web.Models;
 
 namespace MiniAmazon.Web.Controllers
 {
@@ -45,6 +46,17 @@ namespace MiniAmazon.Web.Controllers
             {
                 return false;
             }
+        }
+
+        public ActionResult GenericButton()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GenericButton(GenericButtonInputModel model)
+        {
+            return View();
         }
 
         public ActionResult jsIsCategoryInUse(int categoryId)
@@ -86,13 +98,16 @@ namespace MiniAmazon.Web.Controllers
             if (user == null)
                 return -1;
 
-            if (user.Identity.IsAuthenticated)
+            if (!user.Identity.IsAuthenticated)
                 return -1;
 
             var account = repository.Query<Account>(x => x.Email == user.Identity.Name && x.Active);
 
             if (account != null)
-                return account.First<Account>().Id;
+            {
+                if (account.Count() > 0)
+                    return account.First<Account>().Id;
+            }
 
             return -1;
         }

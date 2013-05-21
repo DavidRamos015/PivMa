@@ -10,7 +10,7 @@ using MiniAmazon.Web.Models;
 
 namespace MiniAmazon.Web.Controllers
 {
-    public class DashBoardController : Controller
+    public class DashBoardController : BootstrapBaseController
     {
 
         private readonly IRepository _repository;
@@ -20,7 +20,7 @@ namespace MiniAmazon.Web.Controllers
         {
             _repository = repository;
             _mappingEngine = mappingEngine;
-            
+
         }
 
         public ActionResult Index()
@@ -30,15 +30,22 @@ namespace MiniAmazon.Web.Controllers
 
         public ActionResult SimpleFilter()
         {
-            ViewBag.Title = "Resultados";
+            return View();
+        }
 
-            string filter = "";
+        [HttpPost]
+        public ActionResult SimpleFilter(SearchFilterInputModel model)
+        {
+            ViewBag.Title = "Resultados de tu busqueda:";
+            ViewBag.Filter = model.BasicFilter;
 
-            var datosAView = _repository.Query<Product>(x => x.Active == true && (x.Description.Contains(filter)));
+            string filter = model.BasicFilter;
+
+            var QueryResult = _repository.Query<Product>(x => x.Active && (x.Description.Contains(filter) || x.Name.Contains(filter)));
 
             List<SearchSimpleInputModel> result = new List<SearchSimpleInputModel>();
 
-            foreach (var p in datosAView)
+            foreach (var p in QueryResult)
             {
                 string category = "Indefinido";
                 string vendor = "Desconocido";
@@ -51,7 +58,7 @@ namespace MiniAmazon.Web.Controllers
                 if (vend != null)
                     vendor = cat.Name;
 
-                var r = new SearchSimpleInputModel(p.Id, p.Name, category, vendor, p.Description, p.Price.ToString(), p.Picture1,p.Inventory.ToString());
+                var r = new SearchSimpleInputModel(p.Id, p.Name, category, vendor, p.Description, p.Price.ToString(), p.Picture1, p.Inventory.ToString());
                 result.Add(r);
             }
 
@@ -60,6 +67,64 @@ namespace MiniAmazon.Web.Controllers
             return View(query);
         }
 
+
+        public ActionResult ProductDetail(int id)
+        {
+
+
+            var item = _repository.First<Product>(x => x.Id == Convert.ToInt64(id) && x.Active);
+
+            if (item == null)
+            {
+                Error("La información del producto seleccionado no se ha podido obtener.");
+                return View();
+            }
+
+            string category = "Indefinido";
+            string vendor = "Desconocido";
+            var cat = _repository.GetById<Categories>(item.CategoryId);
+            var vend = _repository.GetById<Account>(item.AccountId);
+
+            if (cat != null)
+                category = cat.Description;
+
+            if (vend != null)
+                vendor = cat.Name;
+
+            ViewBag.ProductTitle = item.Name.ToNullSafeString();
+            ViewBag.ProductDesc = item.Description.ToNullSafeString();
+            ViewBag.ProductCat = category.ToNullSafeString();
+            ViewBag.ProductVendor = vendor.ToNullSafeString();
+            ViewBag.ProductAccountID = item.AccountId.ToNullSafeString();
+            ViewBag.ProductInventory = item.Inventory.ToNullSafeString();
+            ViewBag.ProductPrice = decimal.Round(item.Price, 2, MidpointRounding.AwayFromZero).ToNullSafeString();
+            ViewBag.ProductPicture1 = item.Picture1.ToNullSafeString();
+            ViewBag.ProductPicture2 = item.Picture2.ToNullSafeString();
+            ViewBag.ProductPicture3 = item.Picture3.ToNullSafeString();
+            ViewBag.ProductPicture14 = item.Picture4.ToNullSafeString();
+
+
+            var result = new SearchInputModel(item.Id, item.Name.ToNullSafeString(), category.ToNullSafeString(), vendor.ToNullSafeString(), item.Description.ToNullSafeString(), item.Price.ToString(),
+                                              item.Picture1.ToNullSafeString(),
+                                              item.Picture2.ToNullSafeString(),
+                                              item.Picture3.ToNullSafeString(),
+                                              item.Picture4.ToNullSafeString(),
+                                              item.YoutubeLink.ToNullSafeString(),
+                                              item.Inventory.ToNullSafeString(),
+                                              item.AccountId.ToNullSafeString()
+                                              );
+
+
+            return View(@result);
+
+        }
+
+        [HttpPost]
+        public ActionResult ProductDetail(SearchInputModel model)
+        {
+
+            return View();
+        }
 
     }
 }

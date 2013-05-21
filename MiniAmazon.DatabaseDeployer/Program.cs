@@ -39,9 +39,9 @@ namespace MiniAmazon.DatabaseDeployer
                                 new RoleSeeder (session ),
                                 new AccountSeeder(session),
                                 new Account_RoleSeeder(session),
-                                new SaleSeeder(session),
+                                //new SaleSeeder(session),
                                 new CategoriesSeeder(session),
-                                new ProductsSeeder(session)
+                                //new ProductsSeeder(session)
                             });
                 tx.Commit();
             }

@@ -74,48 +74,7 @@
             </div>
 
             @RenderBody()
-
-            @*Menu del pie de pagina*@
-            <footer>
-                <hr>
-                <div class="row well no_margin_left">
-
-                    <div class="span3">
-                        <h4>Information</h4>
-                        <ul>
-                            <li><a href="about.html">Acerca de nostros</a></li>
-                            <li><a href="contact.html">Contactenos</a></li>
-                            <li><a href="about.html">Información de entrega </a></li>
-                            <li><a href="about.html">Politica de privacidad</a></li>
-                            <li><a href="about.html">Terminos y condiciones</a></li>
-                        </ul>
-                    </div>
-                    <div class="span3">
-                        <h4>Ayudanos</h4>
-                        <ul>
-                            <li><a href="contact.html">Denuncias</a></li>
-                            <li><a href="about.html">Sugerencia</a></li>
-                            <li><a href="about.html">Publicidad</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="span3">
-
-                        @if (Request.IsAuthenticated)
-                        {
                        
-                            <h4>Mi Cuenta</h4>
-
-                            <li><a>@Html.ActionLink("Perfil", "Profile", "MyAccount")</a></li>
-                            <li><a>@Html.ActionLink("Articulos", "Index_Record", "Product")</a></li>@*
-                            <li><a>href="about.html">Ventas</a></li>
-                            <li><a>href="about.html">Compras</a></li>
-                            <li><a>href="about.html">Transacciones pendientes</a></li>*@
-
-                        }
-                    </div>
-                </div>
-            </footer>
         </div>
 </body>
 </html>

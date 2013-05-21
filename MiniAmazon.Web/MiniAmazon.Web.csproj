@@ -190,6 +190,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\FbWallMessageController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,6 +203,7 @@
     <Compile Include="Infrastructure\RequireRolePolicyViolationHandler.cs" />
     <Compile Include="Models\FacebookLocation.cs" />
     <Compile Include="Models\FacebookUserModel.cs" />
+    <Compile Include="Models\GenericButtonInputModel.cs" />
     <Compile Include="Models\MethodResult.cs" />
     <Compile Include="Models\MyAccountInputModel.cs" />
     <Compile Include="Models\MyAccountLockedInputModel.cs" />
@@ -315,6 +317,12 @@
     <Content Include="Views\shared\_Navigation.cshtml" />
     <Content Include="Views\shared\Error404.cshtml" />
     <Content Include="Views\DashBoard\SimpleFilter.cshtml" />
+    <Content Include="Views\DashBoard\ProductDetail.cshtml" />
+    <Content Include="Views\DashBoard\_SimpleFilter.cshtml" />
+    <Content Include="Views\shared\_GenericButton.cshtml" />
+    <Content Include="Views\shared\_SimpleFilter.cshtml" />
+    <Content Include="Views\shared\_pivma.main.dashboard.Header.Bar.cshtml" />
+    <Content Include="Views\Vendor\VendorProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,7 +14,7 @@ namespace MiniAmazon.DatabaseDeployer.Seeder
         {
             var items = Builder<Product>.CreateNew().Build();
             items.Active = true;
-            
+            items.PendingChange = false;            
             //var items = Builder<Product>.CreateListOfSize(10).Build();
             Session.Save(items);
         }

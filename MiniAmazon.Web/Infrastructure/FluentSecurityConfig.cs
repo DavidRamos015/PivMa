@@ -7,6 +7,7 @@ using FacebookLogin;
 using FluentSecurity;
 using MiniAmazon.Data;
 using MiniAmazon.Web.Controllers;
+using MiniAmazon.Web.Models;
 
 namespace MiniAmazon.Web.Infrastructure
 {
@@ -28,7 +29,8 @@ namespace MiniAmazon.Web.Infrastructure
                 configuration.For<ConfirmationsController>(x => x.Create_Record()).Ignore();
                 configuration.For<FbAccountController>(x => x.Login()).Ignore();
                 configuration.For<DashBoardController>(x => x.Index()).Ignore();
-                configuration.For<DashBoardController>(x => x.SimpleFilter()).Ignore();
+                //configuration.For<DashBoardController>(x => x.SimpleFilter(new SearchFilterInputModel())).Ignore();
+                configuration.For<DashBoardController>(x => x.SimpleFilter(new SearchFilterInputModel())).Ignore();
                 configuration.For<MyAccountController>(x => x.SignIn("")).Ignore();
                 configuration.For<MyAccountController>(x => x.Create_Record()).Ignore();
                 configuration.For<MyAccountController>(x => x.PasswordRecovery()).Ignore();

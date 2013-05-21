@@ -1,0 +1,38 @@
+﻿@using MiniAmazon.Web.Models
+@model SearchFilterInputModel
+
+
+<div class="container" style="width: auto;">
+    @{ Html.BeginForm("SimpleFilter", "DashBoard", FormMethod.Post, new { @class = "form-search" });
+
+        @*Categorias*@
+        <ul class="nav">
+            <li class="dropdown">
+                <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Categorias <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li class="nav-header">Entretenimiento</li>
+                    <li><a href="listing.html">Revistas</a></li>
+                    <li><a href="listing.html">Peliculas</a></li>
+                    <li><a href="listing.html">Videosjuegos</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Hogar</li>
+                    <li><a href="listing.html">Linea Blanca</a></li>
+                    <li><a href="listing.html">Muebles</a></li>
+                    <li><a href="listing.html">Cocina</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Tecnologia</li>
+                    <li><a href="listing.html">Celulares</a></li>
+                    <li><a href="listing.html">Computadoras</a></li>
+                    <li><a href="listing.html">Electronica</a></li>
+                    <li class="divider"></li>
+                    <li><a href="listing.html">Mostrar mas...</a></li>
+                </ul>
+            </li>
+        </ul>
+    
+        <div class="input-append">
+            @Html.TextAreaFor(x => x.BasicFilter, new { @class = "input-xxlarge" })
+            <button class="btn" type="submit">Buscar</button>
+        </div>
+    }
+</div>

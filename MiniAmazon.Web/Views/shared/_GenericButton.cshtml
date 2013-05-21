@@ -1,0 +1,12 @@
+﻿@using MiniAmazon.Web.Models
+@model GenericButtonInputModel
+
+
+<div class="container" style="width: auto;">
+    @{ Html.BeginForm("GenericButton", "Management", FormMethod.Post, new { @class = "form-search" });      
+        <div class="input-append">
+            @Html.TextAreaFor(x => x.Id, new { @class = "input-xxlarge" })
+            <button class="btn" type="submit">Buscar</button>
+        </div>
+    }
+</div>

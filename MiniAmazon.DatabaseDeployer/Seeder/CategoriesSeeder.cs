@@ -14,6 +14,7 @@ namespace MiniAmazon.DatabaseDeployer.Seeder
         public override void Seed()
         {
             var items = Builder<Categories>.CreateNew().Build();
+            items.Name = "Electronica";
             items.IdParent =0;
             items.Active = true;
             Session.Save(items);

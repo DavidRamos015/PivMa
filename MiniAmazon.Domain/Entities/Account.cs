@@ -25,6 +25,14 @@ namespace MiniAmazon.Domain.Entities
         public virtual bool Locked { get; set; }
 
         public virtual bool PendingConfirmation { get; set; }
+        
+        public virtual string Picture { get; set; }
+        public virtual string WenSite1 { get; set; }
+        public virtual string WenSite2 { get; set; }
+        public virtual string WenSite3 { get; set; }
+        public virtual string WenSite4 { get; set; }
+        public virtual string PublicEmail { get; set; }
+        public virtual string About { get; set; }
 
         public virtual IEnumerable<Sale> Sales
         {

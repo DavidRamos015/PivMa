@@ -7,8 +7,12 @@
 
 @using BootstrapSupport
 @model System.Collections.IEnumerable  
-<h4><small> @ViewBag.Title</small></h4>
-<table class="table table-striped">
+
+<div class ="Well"></div>
+
+<div class ="Well">
+<h2>@ViewBag.Title</h2>
+<table class="table table-bordered table-striped">
     <caption></caption>
     <thead>
         <tr>
@@ -64,6 +68,7 @@
     }
 
 </table>
+    </div>
 <p>
     @Html.ActionLink("Agregar", "Create_Record", null, new {@class = "btn"})
 </p>

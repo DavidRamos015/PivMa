@@ -1,24 +1,43 @@
 ﻿@{
-    //ViewBag.Title = "Registros";
-    //Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
-    Layout = "~/Views/shared/_pivma.main.dashboard.Header.Bar.cshtml";
+    Layout = "~/Views/shared/_pivma.main.dashboard.Header.cshtml";
     
 }
-
 
 @using BootstrapSupport
 @model System.Collections.IEnumerable
 
 
+<div class="row">
 
-<legend> <b> <small>@ViewBag.Title @ViewBag.Filter </small> </b> </legend>
-    
+    <div class="span3">
+        <img alt="" src=@ViewBag.Account_Picture height="300" width="300" />
+    </div>
 
+    <div class="span6">
+
+        <div class="span6">
+            <address>
+                <strong>Nombre:</strong> <span>@ViewBag.Account_Name</span><br />
+                <strong>email:</strong> <span>@ViewBag.Account_PublicEmail </span>
+                <strong>Reviews:</strong> <span>@ViewBag.Account_Reviews </span>
+                <br />
+                <strong>Enlace web 1:</strong> <span>@ViewBag.Account_WenSite1</span><br />
+                <strong>Enlace web 2:</strong> <span>@ViewBag.Account_WenSite2</span><br />
+                <strong>Enlace web 3:</strong> <span>@ViewBag.Account_WenSite3</span><br />
+                <strong>Enlace web 4:</strong> <span>@ViewBag.Account_WenSite4</span><br />
+            </address>
+        </div>
+    </div>
+
+
+</div>
+<br />
+<br />
+<br />
 <div class="span12">
-    
-    
+         
     <table class="table table-bordered table-striped">
-        <caption></caption>
+        <caption>Productos</caption>
         <thead>
             <tr>
                 @foreach (var property in Model.VisibleProperties())
@@ -62,17 +81,5 @@
 
     </table>
 
-    <div class="pagination pagination-centered">
-        <ul>
-            <li><a href="#">Anterior</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">Siguiente</a></li>
-        </ul>
-    </div>
 
 </div>
-

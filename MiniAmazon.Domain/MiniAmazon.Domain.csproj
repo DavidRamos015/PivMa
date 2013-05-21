@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\AccountCustomer.cs" />
+    <Compile Include="Entities\AccountWishList.cs" />
+    <Compile Include="Entities\Account_Customers.cs" />
     <Compile Include="Entities\Account_Role.cs" />
     <Compile Include="Entities\Categories.cs" />
     <Compile Include="Entities\EmailsSent.cs" />
@@ -49,6 +51,7 @@
     <Compile Include="Entities\MailOperationType.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductPendingChanges.cs" />
+    <Compile Include="Entities\Product_Customer_Reviews.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Sale.cs" />
     <Compile Include="IRepository.cs" />
