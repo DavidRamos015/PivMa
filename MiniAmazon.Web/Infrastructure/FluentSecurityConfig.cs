@@ -27,7 +27,13 @@ namespace MiniAmazon.Web.Infrastructure
 
 
                 configuration.For<ConfirmationsController>(x => x.Create_Record()).Ignore();
-                configuration.For<FbAccountController>(x => x.Login()).Ignore();
+
+
+                
+                configuration.For<FbAccountController>(x => x.Facebook()).Ignore();
+                configuration.For<FbAccountController>(x => x.FacebookCallback("")).Ignore();
+                
+
                 configuration.For<DashBoardController>(x => x.Index()).Ignore();
                 //configuration.For<DashBoardController>(x => x.SimpleFilter(new SearchFilterInputModel())).Ignore();
                 configuration.For<DashBoardController>(x => x.SimpleFilter(new SearchFilterInputModel())).Ignore();

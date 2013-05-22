@@ -10,7 +10,7 @@ using System.Text;
 using FacebookLogin.Models;
 using System.IO;
 
-namespace FacebookLogin
+namespace MiniAmazon.Web.Infrastructure
 {
     public class Helper
     {

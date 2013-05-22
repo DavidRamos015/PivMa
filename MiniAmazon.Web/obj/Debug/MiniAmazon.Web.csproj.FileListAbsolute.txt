@@ -256,6 +256,7 @@ C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\DataAnnotationsExtension
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\Facebook.dll
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\FacebookLoginButton.dll
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\FluentNHibernate.dll
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\FluentSecurity.dll
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\Iesi.Collections.dll
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\Microsoft.Web.Mvc.dll
@@ -305,4 +306,3 @@ C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\System.Web.WebPages.Razo
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.csprojResolveAssemblyReference.cache
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.dll
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.pdb
-C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\FluentSecurity.dll

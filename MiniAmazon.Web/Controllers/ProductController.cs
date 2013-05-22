@@ -9,6 +9,7 @@ using MiniAmazon.Data;
 using MiniAmazon.Domain;
 using MiniAmazon.Domain.Entities;
 using MiniAmazon.Web.Infrastructure;
+using MiniAmazon.Web.Model;
 using MiniAmazon.Web.Models;
 
 namespace MiniAmazon.Web.Controllers
@@ -23,7 +24,9 @@ namespace MiniAmazon.Web.Controllers
 
         public ActionResult Index_Record()
         {
-            var datosAView = _repository.Query<Product>(x => x.Active == true);
+            var Account_Id = ManagementController.GetAccountID(User, _repository);
+
+            var datosAView = _repository.Query<Product>(x => x.Active == true && x.AccountId == Account_Id);
             var items = datosAView.Project().To<ProductInputModel>();
 
             ViewBag.Title = "Productos";
@@ -54,10 +57,20 @@ namespace MiniAmazon.Web.Controllers
         public ActionResult Create_Record(ProductInputModel model)
         {
             ViewBag.Title = "Crear nuevo producto";
-            var account = _mappingEngine.Map<ProductInputModel, Product>(model);
-            account.Active = true;
-            account.AccountId = ManagementController.GetAccountID(User, _repository);
-            _repository.Create(account);
+            var producto = _mappingEngine.Map<ProductInputModel, Product>(model);
+            producto.Active = true;
+            producto.AccountId = ManagementController.GetAccountID(User, _repository);
+            _repository.Create(producto);
+
+
+            var WallModel = new WallMessageModel();
+            WallModel.description = producto.Description;
+            WallModel.caption = producto.Name;
+            WallModel.message = "Compartiendo:" + producto.Name + ", " + producto.Description + " a " + producto.Price.ToString() + "$, solamente " + producto.Inventory + " en inventario";
+            WallModel.name = producto.Name;
+            WallModel.link = "http://www.pivma.com/" + producto.Name;
+
+            var result = new FbWallMessageController().Post(WallModel, FacebookUtility.Token, FacebookUtility.UserId);
 
             return RedirectToAction("Index_Record");
         }
@@ -222,5 +235,8 @@ namespace MiniAmazon.Web.Controllers
             var item = _repository.GetById<Product>(id);
             return View(item);
         }
+
+
+
     }
 }

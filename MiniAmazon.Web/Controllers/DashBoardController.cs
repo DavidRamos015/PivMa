@@ -71,7 +71,6 @@ namespace MiniAmazon.Web.Controllers
         public ActionResult ProductDetail(int id)
         {
 
-
             var item = _repository.First<Product>(x => x.Id == Convert.ToInt64(id) && x.Active);
 
             if (item == null)
@@ -115,7 +114,7 @@ namespace MiniAmazon.Web.Controllers
                                               );
 
 
-            return View(@result);
+            return View(result);
 
         }
 
@@ -124,6 +123,36 @@ namespace MiniAmazon.Web.Controllers
         {
 
             return View();
+        }
+
+        public ActionResult RateProduct(int id, int rate)
+        {
+            bool success = false;
+            string error = "";
+
+            try
+            {
+                var newRating = new Product_Customer_Reviews();
+                newRating.Account_Id = ManagementController.GetAccountID(User, _repository);
+                newRating.DateReview = DateTime.Now;
+                newRating.Active = true;
+                newRating.Comment = "";
+                newRating.Product_Id = id;
+                newRating.ValueReview = rate;
+
+                _repository.Create(newRating);
+                success = true;
+            }
+            catch (System.Exception ex)
+            {
+                if (ex.InnerException != null)
+                    while (ex.InnerException != null)
+                        ex = ex.InnerException;
+
+                error = ex.Message;
+            }
+
+            return Json(new { error = error, success = success, pid = id }, JsonRequestBehavior.AllowGet);
         }
 
     }

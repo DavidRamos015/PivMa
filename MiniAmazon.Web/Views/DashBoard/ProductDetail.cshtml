@@ -1,20 +1,23 @@
 ﻿@{
     //ViewBag.Title = "Registros";
     //Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
-    Layout = "~/Views/shared/_pivma.main.dashboard.Header.Bar.cshtml";
+   // Layout = "~/Views/shared/_pivma.main.dashboard.Header.Bar.cshtml";    
+}
+
+@{
     
 }
+
 @using MiniAmazon.Web.Models;
 @model SearchInputModel
 
 
 <div align="right">
                    
-                 @Html.ActionLink("Seguir", "AddToFollower", "Vendor", Model.AccountID, new { @class = "btn btn-info" })
-                 @Html.ActionLink("Ver perfil", "VendorProfile", "Vendor", Model.AccountID, new { @class = "btn btn-primary" })
-                 @Html.ActionLink("Ver perfil 2", "VendorProfile","Vendor")
-                 @Html.ActionLink("Denunciar", "Inform", "Management", Model.AccountID, new { @class = "btn btn-danger" })
-                 @Html.ActionLink("Contactar", "Contact", "Vendor", Model.AccountID, new { @class = "btn btn-inverse" })                    
+                 @Html.ActionLink("Seguir", "AddToFollower", "Vendor", new { id = Model.AccountID }, new { @class = "btn btn-info" })
+                 @Html.ActionLink("Ver perfil", "VendorProfile", "Vendor", new { id = Model.AccountID }, new { @class = "btn btn-primary" })
+                 @Html.ActionLink("Denunciar", "Inform", "Management", new { id = Model.AccountID }, new { @class = "btn btn-danger" })
+                 @Html.ActionLink("Contactar", "Contact", "Vendor", new { id = Model.AccountID }, new { @class = "btn btn-inverse" })                    
 
     </div>
 <div class="well">
@@ -26,8 +29,8 @@
 <hr>
 <div class="row">
     <div class="span3">
-        <img alt="" src=@ViewBag.ProductPicture1 height="800" width="600" />
-
+        @*<img alt="" src=@ViewBag.ProductPicture1 height="800" width="600" />*@
+        <img alt="" src=@ViewBag.ProductPicture1 class="img-rounded" height="800" width="600">
 
         @*<ul class="thumbnails">*@
 
@@ -99,6 +102,9 @@
         <div class="span6">
             <p>
                 <a href="#">0 Recomendaciones</a>|<a href="#">Valorar</a>
+                @*@Html.Partial("_ArticleRating", new MiniAmazon.Web.Models.ArticleRating(Model.AccountID, 5, 2))     *@
+                 @Html.Partial("_ArticleRating", Model)
+
             </p>
         </div>
 
@@ -194,3 +200,54 @@
     </div>
 </div>
 
+
+
+
+@section head {
+    <link href="@Url.Content("~/Content/rating.css")" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="@Url.Content("~/Scripts/rating.js")"></script>
+    <script>
+            // ratting system: https://github.com/irfan/jquery-star-rating
+            $('.ratting-item').rating(function (vote, event) {
+                var anchor = $(event.currentTarget),
+                    pid = anchor.closest(".ratting-item").data("pid"),
+                    url = '@Url.Action("RateProduct", "DashBoard")';
+
+                // show message while doing the database round trip
+                $('.ratting-item[data-pid=' + pid + ']')
+                    .next()
+                    .text("Placing your vote...");
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    data: { rate: vote, id: pid },
+                    success: function (data) {
+
+                        if (data.success) {
+                            // all went well, here you can say Thank you
+                            $('.ratting-item[data-pid=' + data.pid + ']')
+                                .next()
+                                .text("Voted! (product id: " + data.pid + ")");
+                        }
+                        else {
+                            // There must be an Exception error, let's show it
+                            $('.ratting-item[data-pid=' + data.pid + ']')
+                                .next()
+                                .text("Something went wrong...");
+                        }
+                    },
+                    error: function (err) {
+                        // the call thrown an error
+                        $('.result').text(err);
+                    },
+                    complete: function () {
+                        //$(".loading").hide();
+                    }
+                });
+            });
+    </script>
+}

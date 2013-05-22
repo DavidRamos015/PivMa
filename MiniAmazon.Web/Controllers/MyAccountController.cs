@@ -103,6 +103,7 @@ namespace MiniAmazon.Web.Controllers
 
 
                 List<string> roles = new List<string>();
+                roles.Add(Utility.UserRole);
                 var roles_user = _repository.Query<Account_Role>(x => x.Account_Id == account.Id);//.Select(x => x.Role_Id).ToList();
                 var roles_db = _repository.Query<Role>(x => x.Id == x.Id);
 

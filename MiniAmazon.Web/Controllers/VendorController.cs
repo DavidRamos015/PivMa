@@ -30,10 +30,10 @@ namespace MiniAmazon.Web.Controllers
         }
 
 
-        public ActionResult VendorProfile()
+        public ActionResult VendorProfile(long id)
         {
 
-            long id = ManagementController.GetAccountID(User, _repository);
+            //long id = ManagementController.GetAccountID(User, _repository);
 
             var account_vendor = _repository.First<Account>(x => x.Id == id && x.Active);
 
@@ -55,7 +55,7 @@ namespace MiniAmazon.Web.Controllers
             ViewBag.Account_WenSite4 = account_vendor.WenSite4.ToNullSafeString();
 
             ViewBag.About = account_vendor.About.ToNullSafeString();
-            
+
 
 
             var QueryResult = _repository.Query<Product>(x => x.Active && x.AccountId == account_vendor.Id);
@@ -110,10 +110,11 @@ namespace MiniAmazon.Web.Controllers
 
             Account_Customers ac = new Account_Customers();
             ac.Customer_Id = id;
+            ac.Account_Id = Account_Id;            
             _repository.Create(ac);
 
             Information("Ahora eres cliente de " + account_vendor.Name);
-            return RedirectToAction("ProductDetail", "DashBoard", id);
+            return RedirectToAction("ProductDetail", "DashBoard", new { id = id });
         }
 
     }

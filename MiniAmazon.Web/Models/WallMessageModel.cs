@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FacebookLogin.Models
+namespace MiniAmazon.Web.Model
 {
     public class WallMessageModel
     {

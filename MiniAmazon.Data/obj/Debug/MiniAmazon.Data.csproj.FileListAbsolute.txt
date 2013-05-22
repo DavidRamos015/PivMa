@@ -70,6 +70,6 @@ C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Data\bin\Debug\MiniAmazon.Domain
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Data\bin\Debug\FluentNHibernate.xml
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Data\bin\Debug\Iesi.Collections.xml
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Data\bin\Debug\NHibernate.xml
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.csprojResolveAssemblyReference.cache
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.dll
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.pdb
-C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Data\obj\Debug\MiniAmazon.Data.csprojResolveAssemblyReference.cache

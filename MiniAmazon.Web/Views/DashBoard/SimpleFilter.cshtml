@@ -23,7 +23,6 @@
             <tr>
                 @foreach (var property in Model.VisibleProperties())
                 {
-
                     <th>
                         @property.GetLabel().ToSeparatedWords()
                     </th>
@@ -37,22 +36,20 @@
         {
             ViewData[index.ToString()] = model;
 
-            <tr>
-
-                
+            <tr>                
                 @foreach (var property in model.VisibleProperties())
                 {
                     if (property.Name == "Picture1")
                     {
                     
                     <td class="muted center_text"><a href="product.html">
-                        <img alt=""  height="100" width="100" src=@Html.Display(index + "." + property.Name) /></a></td>
+                        <img alt=""  class="img-rounded" height="100" width="100" src=@Html.Display(index + "." + property.Name) /></a>
+
+                    </td>
                         continue;
-                    }
-                    
+                    }                    
                     <td>                        
-                        @Html.ActionLink( @Html.Display(index + "." + property.Name).ToString(), "ProductDetail", model.GetIdValue())                        
-                        
+                        @Html.ActionLink( @Html.Display(index + "." + property.Name).ToString(), "ProductDetail", model.GetIdValue())     
                     </td>                  
                 }
 

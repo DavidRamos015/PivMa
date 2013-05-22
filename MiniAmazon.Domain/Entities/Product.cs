@@ -35,6 +35,10 @@ namespace MiniAmazon.Domain.Entities
 
         public virtual int CategoryId { get; set; }
 
+        public virtual int Rating { get; set; }
+
+        public virtual int TotalRaters { get; set; }
+
         public virtual long AccountId { get; set; }
         
 

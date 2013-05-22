@@ -10,7 +10,7 @@
 <div class="row">
 
     <div class="span3">
-        <img alt="" src=@ViewBag.Account_Picture height="300" width="300" />
+        <img alt="" class ="img-polaroid" src=@ViewBag.Account_Picture  height="200" width="200" />
     </div>
 
     <div class="span6">
@@ -35,7 +35,7 @@
 <br />
 <br />
 <div class="span12">
-         
+
     <table class="table table-bordered table-striped">
         <caption>Productos</caption>
         <thead>
@@ -58,20 +58,23 @@
 
             <tr>
 
-                
+
                 @foreach (var property in model.VisibleProperties())
                 {
                     if (property.Name == "Picture1")
                     {
                     
                     <td class="muted center_text"><a href="product.html">
-                        <img alt=""  height="100" width="100" src=@Html.Display(index + "." + property.Name) /></a></td>
+                        <img alt="" class="img-rounded"  height="100" width="100" src=@Html.Display(index + "." + property.Name) /></a></td>
                         continue;
                     }
                     
-                    <td>                        
-                        @Html.ActionLink( @Html.Display(index + "." + property.Name).ToString(), "ProductDetail", model.GetIdValue())                        
-                        
+                    <td>
+                        @Html.ActionLink( @Html.Display(index + "." + property.Name).ToString(), "ProductDetail", model.GetIdValue())
+                        @*@Html.ActionLink(@Html.Display(index + "." + property.Name).ToString(), "ProductDetail", "DashBoard", new { id = model.GetIdValue() },new { @class = "btn btn-info" })*@
+
+                        @*@Html.ActionLink(@Html.Display(index + "." + property.Name).ToString(), "ProductDetail", "DashBoard", new { id = model.GetIdValue() })*@                    
+
                     </td>                  
                 }
 

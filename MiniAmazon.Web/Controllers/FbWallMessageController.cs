@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FacebookLogin.Models;
+using MiniAmazon.Web.Infrastructure;
+using MiniAmazon.Web.Model;
 
-namespace FacebookLogin
+namespace MiniAmazon.Web.Controllers
 {
     public class FbWallMessageController : Controller
     {
@@ -27,6 +29,42 @@ namespace FacebookLogin
         public ActionResult WallMessageError()
         {
             return View();
+        }
+
+
+        public bool Post(WallMessageModel model, string access_token, string uid)
+        {
+            try
+            {
+
+                var postValues = new Dictionary<string, string>();
+
+                // list of available parameters available @ http://developers.facebook.com/docs/reference/api/post
+                postValues.Add("access_token", access_token);
+                postValues.Add("message", model.message + "\r\n\r\n");
+                postValues.Add("link", model.link);
+
+                string facebookWallMsgId = string.Empty;
+                string response;
+                MethodResult header = Helper.SubmitPost(string.Format("https://graph.facebook.com/{0}/feed", uid),
+                                                            Helper.BuildPostString(postValues),
+                                                            out response);
+
+                if (header.returnCode == MethodResult.ReturnCode.Success)
+                {
+                    var deserialised =
+                        Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(response);
+                    facebookWallMsgId = deserialised["id"];
+                    return true;
+                }
+
+            }
+            catch
+            {
+
+            }
+
+            return false;
         }
 
         [HttpPost]
