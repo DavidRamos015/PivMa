@@ -1,8 +1,9 @@
 ﻿@{
-    Layout = "~/Views/shared/_pivma.main.dashboard.Header.cshtml";
+   // Layout = "~/Views/shared/_pivma.main.dashboard.Header.cshtml";
     
 }
 
+@using MiniAmazon.Web.Models;
 @using BootstrapSupport
 @model System.Collections.IEnumerable
 
@@ -10,7 +11,16 @@
 <div class="row">
 
     <div class="span3">
+        @if (@ViewBag.Account_Picture == "")
+        {
+        <img alt="" class="img-polaroid" src="http://placehold.it/200x200" height="200" width="200" />
+        }
+        
+        @if (@ViewBag.Account_Picture != "")
+        {
         <img alt="" class ="img-polaroid" src=@ViewBag.Account_Picture  height="200" width="200" />
+        }
+
     </div>
 
     <div class="span6">
@@ -18,8 +28,12 @@
         <div class="span6">
             <address>
                 <strong>Nombre:</strong> <span>@ViewBag.Account_Name</span><br />
-                <strong>email:</strong> <span>@ViewBag.Account_PublicEmail </span>
-                <strong>Reviews:</strong> <span>@ViewBag.Account_Reviews </span>
+                <strong>email:</strong> <span>@ViewBag.Account_PublicEmail </span><br />
+                
+                <strong>Reviews:</strong> <span>@ViewBag.Account_Reviews_Count </span> <br />
+                <strong>Reviews Agv:</strong> <span>@ViewBag.Account_Reviews_Avg </span> <br />
+
+                @Html.Partial("_RatingAccount", new RatingAccountInputModel (1, @ViewBag.Account_Name,@ViewBag.Account_Reviews_Count,@ViewBag.Account_Reviews_Avg))
                 <br />
                 <strong>Enlace web 1:</strong> <span>@ViewBag.Account_WenSite1</span><br />
                 <strong>Enlace web 2:</strong> <span>@ViewBag.Account_WenSite2</span><br />
@@ -34,10 +48,21 @@
 <br />
 <br />
 <br />
+
+<div align="right">
+                   
+                 @Html.ActionLink("Suscribirme", "AddToFollower", "Vendor", new { id = @ViewBag.Account_ID }, new { @class = "btn btn-info" })
+                 @Html.ActionLink("Denunciar", "Inform", "Management", new { id = @ViewBag.Account_ID }, new { @class = "btn btn-danger" })
+                 @Html.ActionLink("Contactar", "Contact", "Vendor", new { id = @ViewBag.Account_ID }, new { @class = "btn btn-inverse" })     
+                 @Html.ActionLink(" ", "Index", "DashBoard", new { id = @ViewBag.Account_ID }, new { @class = "icon-home"  })        
+                 <a href="javascript:history.back()"><img src="~/Content/images/back.png" height="16" width="16" alt="Botón"</a>          
+
+    </div>
+
 <div class="span12">
 
-    <table class="table table-bordered table-striped">
-        <caption>Productos</caption>
+    <legend> <b> <small>Productos</small> </b> </legend>
+    <table class="table table-bordered table-striped">        
         <thead>
             <tr>
                 @foreach (var property in Model.VisibleProperties())
@@ -66,14 +91,14 @@
                     
                     <td class="muted center_text"><a href="product.html">
                         <img alt="" class="img-rounded"  height="100" width="100" src=@Html.Display(index + "." + property.Name) /></a></td>
-                        continue;
+                        //continue;
                     }
                     
                     <td>
                         @Html.ActionLink( @Html.Display(index + "." + property.Name).ToString(), "ProductDetail", model.GetIdValue())
                         @*@Html.ActionLink(@Html.Display(index + "." + property.Name).ToString(), "ProductDetail", "DashBoard", new { id = model.GetIdValue() },new { @class = "btn btn-info" })*@
 
-                        @*@Html.ActionLink(@Html.Display(index + "." + property.Name).ToString(), "ProductDetail", "DashBoard", new { id = model.GetIdValue() })*@                    
+                        @*@Html.ActionLink(@Html.Display(index + "." + property.Name).ToString(), "ProductDetail", "DashBoard", new { id = model.GetIdValue() })*@
 
                     </td>                  
                 }
@@ -86,3 +111,55 @@
 
 
 </div>
+
+
+
+
+@section head {
+    <link href="@Url.Content("~/Content/rating.css")" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="@Url.Content("~/Scripts/rating.js")"></script>
+    <script>
+            // ratting system: https://github.com/irfan/jquery-star-rating
+            $('.ratting-item').rating(function (vote, event) {
+                var anchor = $(event.currentTarget),
+                    pid = anchor.closest(".ratting-item").data("pid"),
+                    url = '@Url.Action("RateAccount", "DashBoard")';
+
+                // show message while doing the database round trip
+                $('.ratting-item[data-pid=' + pid + ']')
+                    .next()
+                    .text("Guardando tu valoración...");
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    data: { rate: vote, id: pid },
+                    success: function (data) {
+
+                        if (data.success) {
+                            // all went well, here you can say Thank you
+                            $('.ratting-item[data-pid=' + data.pid + ']')
+                                .next()
+                                .text("Valorado! (Producto id: " + data.pid + ")");
+                        }
+                        else {
+                            // There must be an Exception error, let's show it
+                            $('.ratting-item[data-pid=' + data.pid + ']')
+                                .next()
+                                .text("Algo salió mal, valoración no realizada...");
+                        }
+                    },
+                    error: function (err) {
+                        // the call thrown an error
+                        $('.result').text(err);
+                    },
+                    complete: function () {
+                        //$(".loading").hide();
+                    }
+                });
+            });
+    </script>
+}

@@ -91,7 +91,7 @@ namespace FacebookLogin
             var accessToken = result.access_token;
 
             // Store the access token in the session
-            HttpContext.Session["AccessToken"] = accessToken;
+            HttpContext.Session[FacebookUtility.SessionTokenName] = accessToken;
 
             // update the facebook client with the access token so
             // we can make requests on behalf of the user

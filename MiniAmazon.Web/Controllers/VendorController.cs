@@ -44,11 +44,33 @@ namespace MiniAmazon.Web.Controllers
                 return RedirectToAction("ProductDetail", "DashBoard", id);
             }
 
+
+            var reviews_count = 0;
+            var reviews = _repository.Query<Product_Customer_Reviews>(x => x.Entity_Id == id && x.Rate_Type == Convert.ToInt32(RateType.Account));
+            var reviews_sum = 0;
+            var reviews_avg = 0;
+
+            if (reviews != null)
+            {
+                reviews_count = reviews.Count();
+                foreach (var r in reviews)
+                {
+                    reviews_sum += r.ValueReview;
+                }
+            }
+
+            reviews_avg = reviews_sum / (reviews_count <= 0 ? 1 : reviews_count);
+            ViewBag.Account_Reviews_Count = reviews_count.ToString();
+            ViewBag.Account_Reviews_Avg = reviews_avg.ToString();
+
+
             ViewBag.Account_Picture = account_vendor.Picture.ToNullSafeString();
             ViewBag.Account_Name = account_vendor.Name.ToNullSafeString();
             ViewBag.Account_PublicEmail = account_vendor.PublicEmail.ToNullSafeString();
-            ViewBag.Account_Reviews = 90;
 
+
+
+            ViewBag.Account_ID = account_vendor.Id;
             ViewBag.Account_WenSite1 = account_vendor.WenSite1.ToNullSafeString();
             ViewBag.Account_WenSite2 = account_vendor.WenSite2.ToNullSafeString();
             ViewBag.Account_WenSite3 = account_vendor.WenSite3.ToNullSafeString();
@@ -105,17 +127,65 @@ namespace MiniAmazon.Web.Controllers
             if (existingAce != null)
             {
                 Attention("Ya eres cliente de " + account_vendor.Name);
-                return RedirectToAction("ProductDetail", "DashBoard", id);
+                return RedirectToAction("ProductDetail", "DashBoard", new { id = id });
             }
 
             Account_Customers ac = new Account_Customers();
             ac.Customer_Id = id;
-            ac.Account_Id = Account_Id;            
+            ac.Account_Id = Account_Id;
             _repository.Create(ac);
 
             Information("Ahora eres cliente de " + account_vendor.Name);
             return RedirectToAction("ProductDetail", "DashBoard", new { id = id });
         }
 
+        public ActionResult Contact(int id)
+        {
+            var account = ManagementController.GetAccount(User, _repository);
+
+            var model = new ContactsInputModel();
+            model.Customer_Id = account.Id;
+            model.Account_Id = id;
+            model.Email = account.Email;
+            model.FirstName = account.Name;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Contact(ContactsInputModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var Account_Id = model.Account_Id;
+
+                var item = _mappingEngine.Map<ContactsInputModel, Contacts>(model);
+                item.contactType = ContactType.ContactToSeller;
+
+                _repository.Create(item);
+
+                var vendor = _repository.First<Account>(x => x.Id == Account_Id && x.Active);
+
+                if (vendor != null)
+                    if (vendor.Email != null && vendor.Email.Trim().Length > 0)
+                    {
+                        MiniAmazon.Web.Infrastructure.EmailUtility.SendEmail(_repository, vendor.Email, vendor.Name, model.Messages, model.Subject, MailOperationType.ContactToSeller, true);
+
+                    }
+
+                Success("Mensaje enviado");
+                //return RedirectToAction("VendorProfile", "Vendor", new { id = Account_Id });
+                return Redirect("javascript:history.back()");
+
+
+
+            }
+            else
+            {
+                Error("Ha ocurrido al procesar su petición.");
+            }
+
+            return View(model);
+        }
     }
 }

@@ -31,15 +31,25 @@ namespace MiniAmazon.Domain.Entities
 
         public virtual bool Active { get; set; }
 
+        public virtual bool ActiveForSales { get; set; }
+
         public virtual bool PendingChange { get; set; }
 
         public virtual int CategoryId { get; set; }
 
-        public virtual int Rating { get; set; }
+        //public virtual int Rating { get; set; }
 
-        public virtual int TotalRaters { get; set; }
+        //public virtual int TotalRaters { get; set; }
 
         public virtual long AccountId { get; set; }
+
+        public Product()
+        {
+            PendingChange = false;
+            ActiveForSales = true;
+            Active = true;
+            CreateDateTime = DateTime.Now;
+        }
         
 
     }

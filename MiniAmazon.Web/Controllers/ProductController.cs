@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Facebook;
 using MiniAmazon.Data;
 using MiniAmazon.Domain;
 using MiniAmazon.Domain.Entities;
@@ -63,7 +65,59 @@ namespace MiniAmazon.Web.Controllers
             _repository.Create(producto);
 
 
-            var WallModel = new WallMessageModel();
+            if (model.PostOnFacebook)
+            {
+
+                dynamic messagePost = new ExpandoObject();
+                messagePost.picture = model.Picture1;
+                messagePost.link = Utility.UrlAplication; // FacebookUtility.GenerateUrlProduct(producto.Id.ToNullSafeString());
+                messagePost.video = model.YoutubeLink;
+                messagePost.name = model.Name;
+
+                messagePost.caption = "Categoria: " + ManagementController.GetCategoryName(model.CategoryId, _repository);
+                messagePost.description = model.Description + Environment.NewLine +
+                                         "Precio:" + producto.Price.ToNullSafeString() + Environment.NewLine +
+                                         " Inventario:" + producto.Inventory.ToNullSafeString();
+
+                messagePost.message = ManagementController.GetAccountName(User, _repository) + " ha creado un nuevo articulo.";
+
+                if (HttpContext.Session[FacebookUtility.SessionTokenName] == null)
+                {
+                    HttpContext.Session[FacebookUtility.SessionTokenName] = FacebookUtility.Token;
+                }
+
+                if (HttpContext.Session[FacebookUtility.SessionTokenName] != null)
+                {
+                    string acccessToken = HttpContext.Session[FacebookUtility.SessionTokenName].ToString();
+                    FacebookClient appp = new FacebookClient(acccessToken);
+                    appp.AppId = FacebookUtility.ApplicationID;
+                    appp.AppSecret = FacebookUtility.ApplicationSecretCode;
+                    var s = FacebookUtility.Token;
+
+                    try
+                    {
+                        var postId = appp.Post("me/feed?", messagePost);
+
+                        var postData = new Product_Post_Provider();
+                        postData.Product_Id = producto.Id;
+                        postData.Provider_Id = ExternalProvider.Facebook;
+                        postData.RegisterDate = DateTime.Now;
+                        postData.Post_Id = postId.ToString();
+                        _repository.Create(postData);
+                        Success("El producto ha sido publicado en Facebook");
+                    }
+                    catch (Exception ex)
+                    {
+                        Error("El articulo no se ha pudo publicar." + ex.Message);
+                    }
+                }
+                else
+                {
+                    Error("Debe iniciar sesión con su cuenta de Facebook");
+                }
+            }
+
+            /*var WallModel = new WallMessageModel();
             WallModel.description = producto.Description;
             WallModel.caption = producto.Name;
             WallModel.message = "Compartiendo:" + producto.Name + ", " + producto.Description + " a " + producto.Price.ToString() + "$, solamente " + producto.Inventory + " en inventario";
@@ -71,6 +125,7 @@ namespace MiniAmazon.Web.Controllers
             WallModel.link = "http://www.pivma.com/" + producto.Name;
 
             var result = new FbWallMessageController().Post(WallModel, FacebookUtility.Token, FacebookUtility.UserId);
+            */
 
             return RedirectToAction("Index_Record");
         }

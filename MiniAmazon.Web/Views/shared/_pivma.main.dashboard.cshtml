@@ -21,7 +21,7 @@
                         <h4>Bienvenido</h4>
                         @if (Request.IsAuthenticated)
                         {
-                            @Html.ActionLink(User.Identity.Name, "Profile", "MyAccount", User.Identity.Name) <br />
+                            @Html.ActionLink(User.Identity.Name, "MyProfile", "MyAccount") <br />
                             @Html.ActionLink("Cerrar sesión", "LogOut", "MyAccount")
                         }
                         else
@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="link pull-right">
                         @Html.ActionLink("Inicio", "Index", "DashBoard")
-                        @Html.ActionLink("Perfil", "Profile", "MyAccount")
+                        @Html.ActionLink("Perfil", "MyProfile", "MyAccount")
                         @if (Request.IsAuthenticated)
                         {
                             if (User.IsInRole(MiniAmazon.Data.Utility.AdminRole))
@@ -106,7 +106,7 @@
                        
                             <h4>Mi Cuenta</h4>
 
-                            <li><a>@Html.ActionLink("Perfil", "Profile", "MyAccount")</a></li>
+                            <li><a>@Html.ActionLink("Perfil", "MyProfile", "MyAccount")</a></li>
                             <li><a>@Html.ActionLink("Articulos", "Index_Record", "Product")</a></li>@*
                             <li><a>href="about.html">Ventas</a></li>
                             <li><a>href="about.html">Compras</a></li>

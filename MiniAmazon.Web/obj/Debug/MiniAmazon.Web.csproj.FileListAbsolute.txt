@@ -242,6 +242,7 @@ C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4
 C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.dll
 C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.pdb
 C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.csprojResolveAssemblyReference.cache
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.csprojResolveAssemblyReference.cache
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\local.config
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\Web.config
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\Web.Debug.config
@@ -303,6 +304,5 @@ C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\System.Web.Razor.xml
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\System.Web.WebPages.xml
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\System.Web.WebPages.Deployment.xml
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\bin\System.Web.WebPages.Razor.xml
-C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.csprojResolveAssemblyReference.cache
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.dll
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web\obj\Debug\MiniAmazon.Web.pdb

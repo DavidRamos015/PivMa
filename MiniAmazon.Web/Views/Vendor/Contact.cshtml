@@ -1,0 +1,57 @@
+﻿@{
+    //ViewBag.Title = "Registros";
+    Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
+                // Layout = "~/Views/shared/_pivma.main.dashboard.Header.Bar.cshtml";    
+}
+
+@using MiniAmazon.Web.Models;
+@model ContactsInputModel
+
+@*<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">*@
+<div class="well span8">
+    <div class="container" style="width: auto;">
+        <div class="span6">
+            @{ Html.BeginForm("Contact", "Vendor", FormMethod.Post, new { @class = "form-search" });
+
+                <div class="row">
+                    <div class="span3">
+                        <label>Nombres</label>
+                        @Html.TextBoxFor(x => x.FirstName, new { @class = "input-xlarge ", @rows = "1" })
+
+                        <label>Apellidos</label>
+                        @Html.TextBoxFor(x => x.LastName, new { @class = "input-xlarge ", @rows = "1" })
+
+                        <label>Correo</label>
+                        @Html.TextBoxFor(x => x.Email, new { @class = "input-xlarge ", @rows = "1" })
+
+                        @Html.TextBoxFor(x => x.Account_Id, new { @class = "span5 uneditable-input", @type = "text", })
+
+                        @Html.TextBoxFor(x => x.Customer_Id, new { @class = "span5 uneditable-input", @type = "text", })
+
+                        <label>Asunto</label>
+                        <select id="subject" name="subject" class="span3">
+                            <option value="na" selected="">Ninguno:</option>
+                            <option value="service">Servicio al cliente</option>
+                            <option value="suggestions">Sugerencia</option>
+                            <option value="product">Soporte de producto</option>
+                        </select>
+
+                    </div>
+
+                    <div class="span5">
+                        <label>Mensaje</label>
+                        @Html.TextAreaFor(x => x.Messages, new { @class = "input-xlarge span5", @rows = "10" })
+                        <div>
+                            <br />
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+                    </div>
+
+
+                </div>
+    
+            }
+        </div>
+    </div>
+</div>
+@*</div>*@

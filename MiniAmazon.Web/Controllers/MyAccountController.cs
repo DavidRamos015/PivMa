@@ -64,7 +64,8 @@ namespace MiniAmazon.Web.Controllers
                                    MailOperationType.PasswordChange,
                                    true);
 
-            Information("Un mensaje con la información necesaria para recuperar cambiar la clave ha sido enviado a su correo.");
+
+            Success("Un mensaje con la información necesaria para recuperar cambiar la clave ha sido enviado a su correo.");
 
             return RedirectToAction("Index", "DashBoard");
         }
@@ -97,6 +98,7 @@ namespace MiniAmazon.Web.Controllers
             {
                 if (account.PendingConfirmation == true)
                 {
+
                     Attention("Su cuenta esta pendiente de confirmación, favor revise su correo electronico.");
                     return View(accountSignInModel);
                 }
@@ -198,7 +200,8 @@ namespace MiniAmazon.Web.Controllers
                                    "\r\n url:" + Utility.UrlToConfirm, "Confirmación de cuenta",
                                    MailOperationType.RegisterAccount, true);
 
-            Information("Un mensaje de confirmación de la cuenta ha sido enviado a su correo.");
+            Success("Registrado correctamente.");
+            Success("Un mensaje de confirmación de la cuenta ha sido enviado a su correo.");
 
             return RedirectToAction("Index", "DashBoard");
 
@@ -225,10 +228,10 @@ namespace MiniAmazon.Web.Controllers
             return Json(false, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Profile(string  email)
+        public ActionResult Profile(string email)
         {
             ViewBag.Title = "Tu Perfil";
-            var item = _repository.First<Account>(x => x.Email ==email  && x.Active);
+            var item = _repository.First<Account>(x => x.Email == email && x.Active);
 
             if (item == null)
             {
@@ -330,5 +333,9 @@ namespace MiniAmazon.Web.Controllers
             return View(InputModel);
         }
 
+        public ActionResult MyProfile()
+        {
+            return View();
+        }
     }
 }

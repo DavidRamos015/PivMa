@@ -29,14 +29,23 @@ namespace MiniAmazon.Web.Infrastructure
                 configuration.For<ConfirmationsController>(x => x.Create_Record()).Ignore();
 
 
-                
+
                 configuration.For<FbAccountController>(x => x.Facebook()).Ignore();
                 configuration.For<FbAccountController>(x => x.FacebookCallback("")).Ignore();
-                
+
 
                 configuration.For<DashBoardController>(x => x.Index()).Ignore();
-                //configuration.For<DashBoardController>(x => x.SimpleFilter(new SearchFilterInputModel())).Ignore();
                 configuration.For<DashBoardController>(x => x.SimpleFilter(new SearchFilterInputModel())).Ignore();
+                configuration.For<DashBoardController>(x => x.ProductDetail(new SearchInputModel())).Ignore();
+                configuration.For<DashBoardController>(x => x.ProductDetail(-1)).Ignore();                
+                
+
+
+                configuration.For<VendorController>(x => x.VendorProfile(-1)).Ignore();
+                configuration.For<VendorController>(x => x.Contact(-1)).Ignore();
+                configuration.For<VendorController>(x => x.Contact(new ContactsInputModel())).Ignore();
+
+
                 configuration.For<MyAccountController>(x => x.SignIn("")).Ignore();
                 configuration.For<MyAccountController>(x => x.Create_Record()).Ignore();
                 configuration.For<MyAccountController>(x => x.PasswordRecovery()).Ignore();
@@ -48,6 +57,8 @@ namespace MiniAmazon.Web.Infrastructure
                 configuration.For<CategoriesController>().RequireRole(new object[] { Utility.AdminRole });
 
                 configuration.For<ProductController>(x => x.GetPendingApprovalProductList()).RequireRole(new object[] { Utility.AdminRole });
+
+
                 configuration.For<MyAccountController>(x => x.UserAdminControl()).RequireRole(new object[] { Utility.AdminRole });
 
 

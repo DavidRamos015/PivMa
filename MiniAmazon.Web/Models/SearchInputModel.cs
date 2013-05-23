@@ -26,6 +26,9 @@ namespace MiniAmazon.Web.Models
 
         public virtual string AccountID { get; set; }
 
+        public SearchInputModel()
+        { }
+
         public SearchInputModel(long _id, string _ProductName,
                                 string _CategoryName,
                                 string _VendorName,

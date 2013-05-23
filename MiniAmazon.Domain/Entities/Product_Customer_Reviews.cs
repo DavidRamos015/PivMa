@@ -13,6 +13,9 @@ namespace MiniAmazon.Domain.Entities
         public virtual int ValueReview { get; set; }
         public virtual bool Active { get; set; }
         public virtual long Account_Id { get; set; }
-        public virtual long Product_Id { get; set; }
+        public virtual long Entity_Id { get; set; }
+        public virtual int Rate_Type { get; set; }
     }
+
+ 
 }

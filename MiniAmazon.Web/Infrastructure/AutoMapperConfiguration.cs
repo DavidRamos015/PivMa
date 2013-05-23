@@ -11,7 +11,13 @@ namespace MiniAmazon.Web.Infrastructure
             Mapper.CreateMap<MyAccountInputModel, Account>();
             Mapper.CreateMap<CategoriesInputModel, Categories>();
             Mapper.CreateMap<Categories, CategoriesInputModel>();
+            Mapper.CreateMap<MyAccountWishListInputModel, AccountWishList>();
+            Mapper.CreateMap<AccountWishList, MyAccountWishListInputModel>();
 
+            Mapper.CreateMap<Contacts, ContactsInputModel>();
+            Mapper.CreateMap<ContactsInputModel, Contacts>();
+
+            
 
             Mapper.CreateMap<Product, ProductInputModel>();
             Mapper.CreateMap<ProductInputModel, Product>();
@@ -22,7 +28,7 @@ namespace MiniAmazon.Web.Infrastructure
 
             Mapper.CreateMap<ProductPendingChanges, ProductUpdateApprovalInputModel>();
             Mapper.CreateMap<ProductUpdateApprovalInputModel, ProductPendingChanges>();
-            
+
 
             Mapper.CreateMap<Account, MyAccountLockedInputModel>();
             Mapper.CreateMap<MyAccountLockedInputModel, Account>();
@@ -30,7 +36,7 @@ namespace MiniAmazon.Web.Infrastructure
             Mapper.CreateMap<EmailsConfirmationOperation, ConfirmationsInputModel>();
             Mapper.CreateMap<ConfirmationsInputModel, EmailsConfirmationOperation>();
 
-            
+
         }
     }
 

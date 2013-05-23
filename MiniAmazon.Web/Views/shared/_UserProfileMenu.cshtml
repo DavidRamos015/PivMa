@@ -1,0 +1,28 @@
+﻿<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Cuenta</li>
+                    <li class="active"><a href="#">Datos de la cuenta</a></li>
+                    @*<li><a href="#">Lista de deseo0</a></li>*@
+                    <li><a @Html.ActionLink("Lista de deseos","Index","MyAccount_WishList") </a></li>
+                    <li class="nav-header">Clientes</li>
+                    <li><a href="#">Mis clientes</a></li>
+                    <li><a href="#">Mis suscripciones</a></li>
+                    <li><a href="#">Enviar correo</a></li>
+                    <li><a href="#">Contactos</a></li>
+                    <li class="nav-header">Productos</li>
+                    <li><a href="#">Cambios pendientes</a></li>                    
+                    <li><a @Html.ActionLink("Hab/Des. Productos","List","ProductDisableSale") </a></li>
+                    <li><a href="#">Mis Ventas</a></li>
+                </ul>
+            </div>
+            <!--/.well -->
+        </div>
+        <!--/span-->
+
+    </div>
+
+
+</div>

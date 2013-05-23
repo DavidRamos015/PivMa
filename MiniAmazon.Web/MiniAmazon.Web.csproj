@@ -187,9 +187,11 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ConfirmationsController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
+    <Compile Include="Controllers\MyAccount_WishListController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\FbWallMessageController.cs" />
+    <Compile Include="Controllers\ProductDisableSaleController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,6 +204,7 @@
     <Compile Include="Infrastructure\Picture.cs" />
     <Compile Include="Infrastructure\RequireRolePolicyViolationHandler.cs" />
     <Compile Include="Infrastructure\Utils.cs" />
+    <Compile Include="Models\ContactsInputModel.cs" />
     <Compile Include="Models\FacebookLocation.cs" />
     <Compile Include="Models\FacebookUserModel.cs" />
     <Compile Include="Models\GenericButtonInputModel.cs" />
@@ -214,10 +217,13 @@
     <Compile Include="Models\CategoriesInputModel.cs" />
     <Compile Include="Models\ConfirmationsInputModel.cs" />
     <Compile Include="Models\FacebookLoginModel.cs" />
+    <Compile Include="Models\MyAccountWishListInputModel.cs" />
     <Compile Include="Models\ProductInputModel.cs" />
     <Compile Include="Models\ProductRatingInputModel.cs" />
     <Compile Include="Models\ProductUpdateApprovalInputModel.cs" />
     <Compile Include="Models\ProductUpdateInputModel.cs" />
+    <Compile Include="Models\RatingAccountInputModel.cs" />
+    <Compile Include="Models\RatingProductInputModel.cs" />
     <Compile Include="Models\SearchFilterInputModel.cs" />
     <Compile Include="Models\SearchInputModel.cs" />
     <Compile Include="Models\SearchSimpleInputModel.cs" />
@@ -242,6 +248,7 @@
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\style.default.css" />
     <Content Include="Global.asax" />
     <Content Include="scripts\bootstrap-datepicker.js" />
     <Content Include="scripts\bootstrap.js" />
@@ -332,7 +339,12 @@
     <Content Include="Views\shared\_SimpleFilter.cshtml" />
     <Content Include="Views\shared\_pivma.main.dashboard.Header.Bar.cshtml" />
     <Content Include="Views\Vendor\VendorProfile.cshtml" />
-    <None Include="Views\shared\_ArticleRating.cshtml" />
+    <Content Include="Views\shared\_RatingAccount.cshtml" />
+    <Content Include="Views\MyAccount\MyProfile.cshtml" />
+    <Content Include="Views\ProductDisableSale\List.cshtml" />
+    <None Include="Views\shared\_RatingProduct.cshtml" />
+    <Content Include="Views\Vendor\Contact.cshtml" />
+    <Content Include="Views\shared\_UserProfileMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

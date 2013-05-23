@@ -1,7 +1,7 @@
 ﻿@{
-    //ViewBag.Title = "Registros";
-    //Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
-   // Layout = "~/Views/shared/_pivma.main.dashboard.Header.Bar.cshtml";    
+                     //ViewBag.Title = "Registros";
+                     //Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
+                     // Layout = "~/Views/shared/_pivma.main.dashboard.Header.Bar.cshtml";    
 }
 
 @{
@@ -14,10 +14,15 @@
 
 <div align="right">
                    
-                 @Html.ActionLink("Seguir", "AddToFollower", "Vendor", new { id = Model.AccountID }, new { @class = "btn btn-info" })
+                 @Html.ActionLink("Suscribirme", "AddToFollower", "Vendor", new { id = Model.AccountID }, new { @class = "btn btn-info"  })
                  @Html.ActionLink("Ver perfil", "VendorProfile", "Vendor", new { id = Model.AccountID }, new { @class = "btn btn-primary" })
                  @Html.ActionLink("Denunciar", "Inform", "Management", new { id = Model.AccountID }, new { @class = "btn btn-danger" })
                  @Html.ActionLink("Contactar", "Contact", "Vendor", new { id = Model.AccountID }, new { @class = "btn btn-inverse" })                    
+                 @Html.ActionLink(" ", "Index", "DashBoard", new { id = Model.AccountID }, new { @class = "icon-home"  })
+                <a href="javascript:history.back()"><img src="~/Content/images/back.png" height="16" width="16" alt="Botón"</a> 
+                 
+
+     
 
     </div>
 <div class="well">
@@ -67,6 +72,9 @@
                 <strong>Vendedor:</strong> <span>@ViewBag.ProductVendor </span>
                 <br />
                 <strong>Disponibles:</strong> <span>@ViewBag.ProductInventory</span><br />
+
+                <strong>Reviews:</strong> <span>@ViewBag.Product_Reviews_Count </span> <br />
+                <strong>Reviews Agv:</strong> <span>@ViewBag.Product_Reviews_Avg </span> <br />
             </address>
         </div>
 
@@ -103,7 +111,7 @@
             <p>
                 <a href="#">0 Recomendaciones</a>|<a href="#">Valorar</a>
                 @*@Html.Partial("_ArticleRating", new MiniAmazon.Web.Models.ArticleRating(Model.AccountID, 5, 2))     *@
-                 @Html.Partial("_ArticleRating", Model)
+                 @Html.Partial("_RatingProduct", new RatingProductInputModel(Model.Id, Model.ProductName, "0", "20"))
 
             </p>
         </div>
@@ -210,44 +218,44 @@
 @section Scripts {
     <script src="@Url.Content("~/Scripts/rating.js")"></script>
     <script>
-            // ratting system: https://github.com/irfan/jquery-star-rating
-            $('.ratting-item').rating(function (vote, event) {
-                var anchor = $(event.currentTarget),
-                    pid = anchor.closest(".ratting-item").data("pid"),
-                    url = '@Url.Action("RateProduct", "DashBoard")';
+        // ratting system: https://github.com/irfan/jquery-star-rating
+        $('.ratting-item').rating(function (vote, event) {
+            var anchor = $(event.currentTarget),
+                pid = anchor.closest(".ratting-item").data("pid"),
+                url = '@Url.Action("RateProduct", "DashBoard")';
 
-                // show message while doing the database round trip
-                $('.ratting-item[data-pid=' + pid + ']')
-                    .next()
-                    .text("Placing your vote...");
+            // show message while doing the database round trip
+            $('.ratting-item[data-pid=' + pid + ']')
+                .next()
+                .text("Guardando tu valoración...");
 
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    data: { rate: vote, id: pid },
-                    success: function (data) {
+            $.ajax({
+                url: url,
+                type: "GET",
+                data: { rate: vote, id: pid },
+                success: function (data) {
 
-                        if (data.success) {
-                            // all went well, here you can say Thank you
-                            $('.ratting-item[data-pid=' + data.pid + ']')
-                                .next()
-                                .text("Voted! (product id: " + data.pid + ")");
-                        }
-                        else {
-                            // There must be an Exception error, let's show it
-                            $('.ratting-item[data-pid=' + data.pid + ']')
-                                .next()
-                                .text("Something went wrong...");
-                        }
-                    },
-                    error: function (err) {
-                        // the call thrown an error
-                        $('.result').text(err);
-                    },
-                    complete: function () {
-                        //$(".loading").hide();
+                    if (data.success) {
+                        // all went well, here you can say Thank you
+                        $('.ratting-item[data-pid=' + data.pid + ']')
+                            .next()
+                            .text("Valorado! (Producto id: " + data.pid + ")");
                     }
-                });
+                    else {
+                        // There must be an Exception error, let's show it
+                        $('.ratting-item[data-pid=' + data.pid + ']')
+                            .next()
+                            .text("Algo salió mal, valoración no realizada...");
+                    }
+                },
+                error: function (err) {
+                    // the call thrown an error
+                    $('.result').text(err);
+                },
+                complete: function () {
+                    //$(".loading").hide();
+                }
             });
+        });
     </script>
 }

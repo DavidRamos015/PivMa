@@ -41,7 +41,7 @@ namespace MiniAmazon.Web.Controllers
 
             string filter = model.BasicFilter;
 
-            var QueryResult = _repository.Query<Product>(x => x.Active && (x.Description.Contains(filter) || x.Name.Contains(filter)));
+            var QueryResult = _repository.Query<Product>(x => x.Active && x.ActiveForSales && (x.Description.Contains(filter) || x.Name.Contains(filter)));
 
             List<SearchSimpleInputModel> result = new List<SearchSimpleInputModel>();
 
@@ -71,7 +71,7 @@ namespace MiniAmazon.Web.Controllers
         public ActionResult ProductDetail(int id)
         {
 
-            var item = _repository.First<Product>(x => x.Id == Convert.ToInt64(id) && x.Active);
+            var item = _repository.First<Product>(x => x.Id == Convert.ToInt64(id) && x.Active && x.ActiveForSales);
 
             if (item == null)
             {
@@ -89,6 +89,27 @@ namespace MiniAmazon.Web.Controllers
 
             if (vend != null)
                 vendor = cat.Name;
+
+
+
+            var reviews_count = 0;
+            var reviews = _repository.Query<Product_Customer_Reviews>(x => x.Entity_Id == id && x.Rate_Type == Convert.ToInt32(RateType.Product));
+            var reviews_sum = 0;
+            var reviews_avg = 0;
+
+            if (reviews != null)
+            {
+                reviews_count = reviews.Count();
+                foreach (var r in reviews)
+                {
+                    reviews_sum += r.ValueReview;
+                }
+            }
+
+            reviews_avg = reviews_sum / (reviews_count <= 0 ? 1 : reviews_count);
+            ViewBag.Product_Reviews_Count = reviews_count.ToString();
+            ViewBag.Product_Reviews_Avg = reviews_avg.ToString();
+
 
             ViewBag.ProductTitle = item.Name.ToNullSafeString();
             ViewBag.ProductDesc = item.Description.ToNullSafeString();
@@ -137,7 +158,40 @@ namespace MiniAmazon.Web.Controllers
                 newRating.DateReview = DateTime.Now;
                 newRating.Active = true;
                 newRating.Comment = "";
-                newRating.Product_Id = id;
+                newRating.Entity_Id = id;
+                newRating.Rate_Type = Convert.ToInt32(RateType.Product);
+                newRating.ValueReview = rate;
+
+                _repository.Create(newRating);
+                success = true;
+            }
+            catch (System.Exception ex)
+            {
+                if (ex.InnerException != null)
+                    while (ex.InnerException != null)
+                        ex = ex.InnerException;
+
+                error = ex.Message;
+            }
+
+            return Json(new { error = error, success = success, pid = id }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult RateAccount(int id, int rate)
+        {
+            bool success = false;
+            string error = "";
+
+            try
+            {
+                var newRating = new Product_Customer_Reviews();
+                newRating.Account_Id = ManagementController.GetAccountID(User, _repository);
+                newRating.DateReview = DateTime.Now;
+                newRating.Active = true;
+                newRating.Comment = "";
+                newRating.Entity_Id = id;
+                newRating.Rate_Type = Convert.ToInt32(RateType.Account);
                 newRating.ValueReview = rate;
 
                 _repository.Create(newRating);

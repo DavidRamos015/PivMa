@@ -48,6 +48,8 @@ namespace MiniAmazon.Web.Controllers
             }
         }
 
+   
+
         public ActionResult GenericButton()
         {
             return View();
@@ -91,6 +93,52 @@ namespace MiniAmazon.Web.Controllers
                 return true;
 
             return false;
+        }
+
+
+        public static string GetCategoryName(int CategoryId, IRepository repository)
+        {
+            var cat = repository.First<Categories>(x => x.Id == CategoryId && x.Active);
+
+            if (cat == null)
+                return "Todas";
+
+            return cat.Name;
+
+        }
+
+        public static string GetAccountName(System.Security.Principal.IPrincipal user, IRepository repository)
+        {
+            string anonymous = "Anonimo";
+
+            if (user == null)
+                return anonymous;
+
+            if (!user.Identity.IsAuthenticated)
+                return anonymous;
+
+            var account = repository.Query<Account>(x => x.Email == user.Identity.Name && x.Active);
+
+            if (account != null)
+            {
+                if (account.Count() > 0)
+                    return account.First<Account>().Name;
+            }
+
+            return anonymous;
+        }
+
+        public static Account GetAccount(System.Security.Principal.IPrincipal user, IRepository repository)
+        {
+            var account = repository.Query<Account>(x => x.Email == user.Identity.Name && x.Active);
+
+            if (account != null)
+            {
+                if (account.Count() > 0)
+                    return account.First<Account>();
+            }
+
+            return new Account();
         }
 
         public static long GetAccountID(System.Security.Principal.IPrincipal user, IRepository repository)

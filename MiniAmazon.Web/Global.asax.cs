@@ -57,8 +57,7 @@ BootstrapMvcSample.ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
         public static ISessionFactory CreateSessionFactory()
         {
             MsSqlConfiguration databaseConfiguration = MsSqlConfiguration.MsSql2008.ShowSql().
-               // ConnectionString(x => x.FromConnectionStringWithKey("MiniAmazon.Local"));
-                ConnectionString(x => x.FromConnectionStringWithKey("MiniAmazon.Remote"));
+               ConnectionString(x => x.FromConnectionStringWithKey(Utility.ConnectionString));
             ISessionFactory sessionFactory = new SessionFactoryBuilder(new MappingScheme(), databaseConfiguration)
                 .Build();
 
