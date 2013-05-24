@@ -1,5 +1,4 @@
 C:\Users\draos2q\Desktop\prj 30-04-2013\miniAmazonProga4-master\miniAmazonProga4-master\MiniAmazon.Web.Specs\obj\Debug\MiniAmazon.Web.Specs.csprojResolveAssemblyReference.cache
-C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\obj\Debug\MiniAmazon.Web.Specs.csprojResolveAssemblyReference.cache
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\bin\Debug\local.config
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\bin\Debug\Web.config
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\bin\Debug\Web.Debug.config
@@ -47,5 +46,6 @@ C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\bin\Debug\System.Web.H
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\bin\Debug\Iesi.Collections.xml
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\bin\Debug\System.Net.Http.xml
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\obj\Debug\MiniAmazon.Web.Specs.csprojResolveAssemblyReference.cache
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\obj\Debug\MiniAmazon.Web.Specs.dll
 C:\Users\draos2q\Desktop\Pivma\PivMa\MiniAmazon.Web.Specs\obj\Debug\MiniAmazon.Web.Specs.pdb

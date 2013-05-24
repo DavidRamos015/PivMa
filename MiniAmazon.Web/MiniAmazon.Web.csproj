@@ -218,6 +218,7 @@
     <Compile Include="Models\FacebookLoginModel.cs" />
     <Compile Include="Models\MyAccountWishListInputModel.cs" />
     <Compile Include="Models\MyAccount_ProfileInputModel.cs" />
+    <Compile Include="Models\MyAccount_SendMailInputModel.cs" />
     <Compile Include="Models\ProductInputModel.cs" />
     <Compile Include="Models\ProductRatingInputModel.cs" />
     <Compile Include="Models\ProductUpdateApprovalInputModel.cs" />
@@ -336,7 +337,6 @@
     <Content Include="Views\DashBoard\ProductDetail.cshtml" />
     <Content Include="Views\DashBoard\_SimpleFilter.cshtml" />
     <Content Include="Views\shared\_GenericButton.cshtml" />
-    <Content Include="Views\shared\_SimpleFilter.cshtml" />
     <Content Include="Views\shared\_pivma.main.dashboard.Header.Bar.cshtml" />
     <Content Include="Views\Vendor\VendorProfile.cshtml" />
     <Content Include="Views\DashBoard\_RatingAccount.cshtml" />
@@ -346,6 +346,8 @@
     <None Include="Views\DashBoard\_RatingProduct.cshtml" />
     <Content Include="Views\Vendor\Contact.cshtml" />
     <Content Include="Views\MyAccount\_UserProfileMenu.cshtml" />
+    <Content Include="Views\MyAccount\SendMail.cshtml" />
+    <Content Include="Views\Vendor\_RatingAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,7 +24,7 @@ namespace MiniAmazon.Data
     public class Utility
     {
 
-        public static bool RemoteConnection = false;
+        public static bool RemoteConnection = true;
         public static string MsjNeedToLogin = "Necesitas iniciar sesión para utilizar esta sección,";
         public static string AdminRole = "Admin";
         public static string UserRole = "User";

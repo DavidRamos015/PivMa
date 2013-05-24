@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MiniAmazon.Domain.Entities
 {
-    public class AccountCustomer : IEntity
+    public class _AccountCustomer : IEntity
     {
         public virtual long Id { get; set; }
         public virtual long AccountId_C { get; set; }

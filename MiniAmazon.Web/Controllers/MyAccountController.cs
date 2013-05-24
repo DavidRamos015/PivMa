@@ -340,6 +340,18 @@ namespace MiniAmazon.Web.Controllers
         public ActionResult MyProfile()
         {
             return View();
+        }        
+        public ActionResult SendMail()
+        {
+            return View();
+        }
+
+         [HttpPost]
+        public ActionResult SendMail(MyAccount_SendMailInputModel model)
+        {
+            EmailUtility.SendEmail(_repository, model.Email, model.Subject, model.Messages, model.Messages, MailOperationType.ContactToCustomer, true);
+
+            return RedirectToAction("MyAccountProfile", "MyAccount");
         }
     }
 }

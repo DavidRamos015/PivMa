@@ -8,7 +8,8 @@
         PasswordChange = 4,
         PasswordChangedWhenUpdatedProfile = 6,
         UserDisableorLocked = 5,
-        ContactToSeller = 6
+        ContactToSeller = 6,
+        ContactToCustomer = 7
     }
 
     public enum RateType

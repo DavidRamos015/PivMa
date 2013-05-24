@@ -7,22 +7,22 @@ using NHibernate;
 
 namespace MiniAmazon.DatabaseDeployer.Seeder
 {
-    public class AccountCustomerSeeder:Seeder
-    {
-        public AccountCustomerSeeder(ISession session)
-            : base(session)
-        {
-        }
+    //public class AccountCustomerSeeder:Seeder
+    //{
+    //    public AccountCustomerSeeder(ISession session)
+    //        : base(session)
+    //    {
+    //    }
 
-        public override void Seed()
-        {
-            var item = new AccountCustomer
-                {
-                 AccountId_C=1,
-                 AccountId_V=1
-                };
+    //    public override void Seed()
+    //    {
+    //        var item = new AccountCustomer
+    //            {
+    //             AccountId_C=1,
+    //             AccountId_V=1
+    //            };
 
-            Session.Save(item);
-        }
-    }
+    //        Session.Save(item);
+    //    }
+    //}
 }
