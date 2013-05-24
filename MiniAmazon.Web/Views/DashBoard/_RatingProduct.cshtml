@@ -1,0 +1,11 @@
+﻿@model MiniAmazon.Web.Models.RatingProductInputModel
+
+<h5> Valora este articulo <small>@Model.Name</small></h5>
+<div class="ratting-item" data-pid="@Model.Id">
+    <input class="rating" name="vote" type="radio" value="1" />
+    <input class="rating" name="vote" type="radio" value="2" />
+    <input class="rating" name="vote" type="radio" value="3" />
+    <input class="rating" name="vote" type="radio" value="4" />
+    <input class="rating" name="vote" type="radio" value="5" />
+</div>
+<span class="result"></span>

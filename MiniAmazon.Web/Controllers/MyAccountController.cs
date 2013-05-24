@@ -228,24 +228,26 @@ namespace MiniAmazon.Web.Controllers
             return Json(false, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Profile(string email)
+        public ActionResult MyAccountProfile()
         {
+            var account = ManagementController.GetAccount(User, _repository);
+
             ViewBag.Title = "Tu Perfil";
-            var item = _repository.First<Account>(x => x.Email == email && x.Active);
+            var item = _repository.First<Account>(x => x.Email == account.Email && x.Active);
 
             if (item == null)
             {
-                Error("El perfil no pudo ser cargado.");
+                Attention("El perfil no pudo ser cargado.");
                 return RedirectToAction("Index", "DashBoard");
             }
-            var accountLockedInputModel = _mappingEngine.Map<Account, MyAccountLockedInputModel>(item);
+            var accountLockedInputModel = _mappingEngine.Map<Account, MyAccount_ProfileInputModel>(item);
 
 
             return View(accountLockedInputModel);
         }
 
         [HttpPost]
-        public ActionResult Profile(MyAccountLockedInputModel InputModel)
+        public ActionResult MyAccountProfile(MyAccount_ProfileInputModel InputModel)
         {
             ViewBag.Title = "Tu Perfil";
             if (ModelState.IsValid)
@@ -258,17 +260,19 @@ namespace MiniAmazon.Web.Controllers
                     return RedirectToAction("Index", "DashBoard");
                 }
 
-                var item = _mappingEngine.Map<MyAccountLockedInputModel, Account>(InputModel);
+                var item = _mappingEngine.Map<MyAccount_ProfileInputModel, Account>(InputModel);
                 item.Active = account.Active;
                 item.Locked = account.Locked;
                 item.PendingConfirmation = account.PendingConfirmation;
+                item.Email = account.Email;
+
 
                 if (account.Password != item.Password)
                 {
                     EmailUtility.SendEmail(_repository, item.Email,
                                                         item.Name,
-                                                        InputModel.Comments,
                                                         "Haz cambiado la contraseña de tu cuenta el" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString(),
+                                                         "Cambio de contraseña",
                                                         MailOperationType.PasswordChangedWhenUpdatedProfile, true);
                 }
 

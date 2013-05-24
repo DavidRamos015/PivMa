@@ -16,8 +16,8 @@ namespace MiniAmazon.Web.Models
 
         [Display(Name = "Correo electronico")]
         [Required(ErrorMessage = "Correo es requerido.")]
-        [StringLength(100)]
-        [DataType(DataType.EmailAddress, ErrorMessage = "El correo tiene un formato invalido,Debe ser menor de 100 caractereres.")]
+        [StringLength(100,ErrorMessage="Debe ser menor de 100 caractereres.")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "El correo tiene un formato invalido.")]
         //        [Remote("jsExistingUserEmail", "Management", ErrorMessage = "El correo ya esta registrado, intente con otro.")]
         public string Email { get; set; }
 

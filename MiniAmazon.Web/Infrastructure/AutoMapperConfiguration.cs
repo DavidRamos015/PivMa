@@ -17,8 +17,9 @@ namespace MiniAmazon.Web.Infrastructure
             Mapper.CreateMap<Contacts, ContactsInputModel>();
             Mapper.CreateMap<ContactsInputModel, Contacts>();
 
-            
-
+            Mapper.CreateMap<Account, MyAccount_ProfileInputModel>();
+            Mapper.CreateMap<MyAccount_ProfileInputModel, Account>();
+                        
             Mapper.CreateMap<Product, ProductInputModel>();
             Mapper.CreateMap<ProductInputModel, Product>();
 

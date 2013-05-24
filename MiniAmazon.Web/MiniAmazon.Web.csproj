@@ -211,13 +211,13 @@
     <Compile Include="Models\MethodResult.cs" />
     <Compile Include="Models\MyAccountInputModel.cs" />
     <Compile Include="Models\MyAccountLockedInputModel.cs" />
-    <Compile Include="Models\MyAccountProfileModel.cs" />
     <Compile Include="Models\MyAccountRecoveryPasswordInputModel.cs" />
     <Compile Include="Models\MyAccountSignInModel.cs" />
     <Compile Include="Models\CategoriesInputModel.cs" />
     <Compile Include="Models\ConfirmationsInputModel.cs" />
     <Compile Include="Models\FacebookLoginModel.cs" />
     <Compile Include="Models\MyAccountWishListInputModel.cs" />
+    <Compile Include="Models\MyAccount_ProfileInputModel.cs" />
     <Compile Include="Models\ProductInputModel.cs" />
     <Compile Include="Models\ProductRatingInputModel.cs" />
     <Compile Include="Models\ProductUpdateApprovalInputModel.cs" />
@@ -339,12 +339,13 @@
     <Content Include="Views\shared\_SimpleFilter.cshtml" />
     <Content Include="Views\shared\_pivma.main.dashboard.Header.Bar.cshtml" />
     <Content Include="Views\Vendor\VendorProfile.cshtml" />
-    <Content Include="Views\shared\_RatingAccount.cshtml" />
+    <Content Include="Views\DashBoard\_RatingAccount.cshtml" />
     <Content Include="Views\MyAccount\MyProfile.cshtml" />
     <Content Include="Views\ProductDisableSale\List.cshtml" />
-    <None Include="Views\shared\_RatingProduct.cshtml" />
+    <Content Include="Views\MyAccount\MyAccountProfile.cshtml" />
+    <None Include="Views\DashBoard\_RatingProduct.cshtml" />
     <Content Include="Views\Vendor\Contact.cshtml" />
-    <Content Include="Views\shared\_UserProfileMenu.cshtml" />
+    <Content Include="Views\MyAccount\_UserProfileMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

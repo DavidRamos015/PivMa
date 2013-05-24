@@ -32,9 +32,9 @@ namespace MiniAmazon.Data
         public static string AdminPassWord = "pwmformytest123";
         public static string AdminName = "Administrador";
 
-        public static string AplicationName =  "miniamazon2";
+        public static string AplicationName = "miniamazon2";
         public static string UrlAplication = "http://" + AplicationName + ".apphb.com";
-        public static string UrlToConfirm = "http://" + AplicationName + "/Confirmations/Create_Record";
+        public static string UrlToConfirm = UrlAplication + "/Confirmations/Create_Record";
 
 
         public static string ConnectionString

@@ -1,0 +1,108 @@
+﻿@{
+    //ViewBag.Title = "Registros";
+    Layout = "~/Views/shared/_pivma.main.dashboard.Header.cshtml";
+                // Layout = "~/Views/shared/_pivma.main.dashboard.Header.Bar.cshtml";    
+}
+
+@using MiniAmazon.Web.Models;
+@model MyAccount_ProfileInputModel
+
+@*<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">*@
+<div class="well span8">
+    <div class="container" style="width: auto;">
+        <div class="span6">
+            @{ Html.BeginForm("MyAccountProfile", "MyAccount", FormMethod.Post, new { @class = "form-search" });
+
+                <div class="row">
+                    <div class="span3">
+
+
+
+                        <legend>
+                            <center><b> <small>Fotografía de perfil</small> </b> </center>
+                        </legend>
+
+                        <center>
+                        @if (Model.Picture.IsEmpty())
+                        {
+                            <img src="http://placehold.it/1170x210" class="img-circle" height="90" width="90">
+                        }
+
+                        @if (!Model.Picture.IsEmpty())
+                        {
+                            <img src= "@Model.Picture" class="img-circle" height="90" width="90">
+                        }
+                        <br />
+                            </center>
+
+                        <legend>
+                            <center><b> <small>Datos generales</small> </b> </center>
+                        </legend>
+                        <label>Id</label>
+                        @Html.TextBoxFor(x => x.Id, new { @class = "span1 uneditable-input", @rows = "1", @type = "label" })
+                        <br />
+                        @* <label>Correo</label>
+                        @Html.LabelFor(x => x., new { @class = "span1 uneditable-input", @rows = "1",@type="text" })*@
+
+
+                        <label>Url fotografía de perfil</label>
+                        @Html.TextBoxFor(x => x.Picture, new { @class = "input-xlarge ", @rows = "1" })
+
+                        <label>Nombre</label>
+                        @Html.TextBoxFor(x => x.Name, new { @class = "input-xlarge ", @rows = "1" })
+
+                        <label>Edad</label>
+                        @Html.TextBoxFor(x => x.Age, new { @class = "input-xlarge ", @rows = "1" })
+
+                        <label>Genero</label>
+                        @Html.TextBoxFor(x => x.Genre, new { @class = "input-xlarge ", @rows = "1" })
+
+                        <label>Información de contacto</label>
+                        @Html.TextBoxFor(x => x.PublicEmail, new { @class = "input-xlarge ", @rows = "1" })
+
+
+
+                        <legend>
+                            <center><b> <small>Información de la contraseña</small> </b> </center>
+                        </legend>
+                        <label>Actual</label>
+                        @Html.TextBoxFor(x => x.Password_Old, new { @type = "password", @class = "input-xlarge", @rows = "1" })
+
+                        <label>Nueva contraseña</label>
+                        @Html.TextBoxFor(x => x.Password, new { @type = "password", @class = "input-xlarge", @rows = "1" })
+
+                        <label>Confirmar contraseña</label>
+                        @Html.TextBoxFor(x => x.PasswordConfirm, new { @type = "password", @class = "input-xlarge", @rows = "1" })
+
+                        <legend>
+                            <center><b> <small>Enlaces web</small> </b> </center>
+                        </legend>
+
+                        <label>Enlace web</label>
+                        @Html.TextBoxFor(x => x.WenSite1, new { @class = "input-xlarge ", @rows = "1" })
+                        <label>Enlace web</label>
+                        @Html.TextBoxFor(x => x.WenSite2, new { @class = "input-xlarge ", @rows = "1" })
+                        <label>Enlace web</label>
+                        @Html.TextBoxFor(x => x.WenSite3, new { @class = "input-xlarge ", @rows = "1" })
+                        <label>Enlace web</label>
+                        @Html.TextBoxFor(x => x.WenSite4, new { @class = "input-xlarge ", @rows = "1" })
+
+                    </div>
+
+                    <div class="span5">
+                        <label>Acerca de ti</label>
+                        @Html.TextAreaFor(x => x.About, new { @class = "input-xlarge span5", @rows = "10" })
+                        <div>
+                            <br />
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">Actualizar mis datos</button>
+                    </div>
+
+
+                </div>
+    
+            }
+        </div>
+    </div>
+</div>
+@*</div>*@
